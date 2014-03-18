@@ -4,11 +4,11 @@ optimist = require 'optimist'
 Highlights = require './highlights'
 
 module.exports = ->
-  cli = optimist.describe('help', 'Show this message').alias('h', 'help')
-                .describe('scope', 'Scope name of the grammar to use').alias('s', 'scope')
-                .describe('output', 'File path to write HTML output to').alias('o', 'output')
+  cli = optimist.describe('h', 'Show this message').alias('h', 'help')
+                .describe('s', 'Scope name of the grammar to use').alias('s', 'scope').string('s')
+                .describe('o', 'File path to write HTML output to').alias('o', 'output').string('o')
   optimist.usage """
-    Usage: highlights file
+    Usage: highlights [options] [file]
 
     Output the syntax highlighted HTML for a file.
 
