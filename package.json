@@ -21,5 +21,13 @@
     "optimist": "^0.6.1",
     "underscore-plus": "^1.0.5",
     "fs-plus": "^2.0.4"
+  },
+  "devDependencies": {
+    "jasmine-focused": "^1.0.4",
+    "grunt": "^0.4.4",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-shell": "^0.6.4",
+    "grunt-coffeelint": "0.0.8"
   }
 }
