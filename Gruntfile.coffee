@@ -35,6 +35,8 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'clean', ->
     grunt.file.delete('lib') if grunt.file.exists('lib')
+    grunt.file.delete('gen') if grunt.file.exists('gen')
+
   grunt.registerTask('lint', ['coffeelint:src', 'coffeelint:test'])
   grunt.registerTask('default', ['coffeelint', 'coffee'])
   grunt.registerTask('test', ['default', 'lint', 'shell:test'])
