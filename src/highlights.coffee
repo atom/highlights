@@ -16,8 +16,9 @@ class Highlights
   #   :scopeName    - An optional String scope name of a grammar. The best match
   #                   grammar will be used if this is unspecified.
   #
-  # Returns a String of HTML. The HTML will contains one <div> per line and each
-  # line will contain one or more <span> elements for the tokens in the line.
+  # Returns a String of HTML. The HTML will contains one <pre> with one <div>
+  # per line and each line will contain one or more <span> elements for the
+  # tokens in the line.
   highlightSync: ({filePath, fileContents, scopeName}={}) ->
     fileContents ?= fs.readFileSync(filePath, 'utf8') if filePath
     grammar = @registry.grammarForScopeName(scopeName)
@@ -30,7 +31,7 @@ class Highlights
       if lastLineTokens.length is 1 and lastLineTokens[0].value is ''
         lineTokens.pop()
 
-    html = ''
+    html = '<pre class="editor">'
     for tokens in lineTokens
       scopeStack = []
       html += '<div class="line">'
@@ -40,6 +41,7 @@ class Highlights
         html += "<span>#{@escapeString(value)}</span>"
 
       html += '</div>'
+    html += '</pre>'
     html
 
   escapeString: (string) ->
