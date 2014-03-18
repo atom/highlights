@@ -3,3 +3,26 @@
 Reads in code, writes out HTML with CSS classes based on the tokens in the code.
 
 [![Build Status](https://travis-ci.org/atom/highlights.png)](https://travis-ci.org/atom/highlights)
+
+
+### Installing
+
+```sh
+npm install highlights
+```
+
+### Using
+
+```sh
+highlights file.coffee -o file.html
+```
+
+Run `highlights -h` for full details about the supported options.
+
+### Developing
+
+* Close this repository
+* Run `npm install`
+* Run `npm test` to run the specs
+
+:green_heart: Pull requests are greatly appreciated and welcomed.
