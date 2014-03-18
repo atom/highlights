@@ -31,10 +31,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-shell')
   grunt.loadNpmTasks('grunt-coffeelint')
+  grunt.loadTasks('tasks')
 
   grunt.registerTask 'clean', ->
     grunt.file.delete('lib') if grunt.file.exists('lib')
   grunt.registerTask('lint', ['coffeelint:src', 'coffeelint:test'])
   grunt.registerTask('default', ['coffeelint', 'coffee'])
   grunt.registerTask('test', ['default', 'lint', 'shell:test'])
-  grunt.registerTask('prepublish', ['clean', 'test'])
+  grunt.registerTask('prepublish', ['clean', 'build-grammars', 'test'])

@@ -11,11 +11,9 @@ class Highlights
   loadGrammarsSync: ->
     return if @registry.grammars.length > 1
 
-    depsDir = path.resolve(__dirname, '..', 'deps')
-    for grammar in fs.readdirSync(depsDir)
-      grammarsDir = path.join(depsDir, grammar, 'grammars')
-      for file in fs.readdirSync(grammarsDir)
-        @registry.loadGrammarSync(path.join(grammarsDir, file))
+    grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
+    for grammarPath, grammar of JSON.parse(fs.readFileSync(grammarsPath))
+      @registry.addGrammar(@registry.createGrammar(grammarPath, grammar))
 
   # Public: Syntax highlight the given file synchronously.
   #
