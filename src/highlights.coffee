@@ -7,16 +7,19 @@ class Highlights
   constructor: ->
     @registry = new GrammarRegistry()
 
-  # Public: Syntax highlight the given file synchronously
+  # Public: Syntax highlight the given file synchronously.
   #
-  # filePath  - The String path to the file.
-  # scopeName - An optional String scope name of a grammar. The best match
-  #             grammar will be used if unspecified.
+  # options - An Object with the following keys:
+  #   :fileContents - The optional String contents of the file. The file will
+  #                   be read from disk if this is unspecified
+  #   :filePath     - The String path to the file.
+  #   :scopeName    - An optional String scope name of a grammar. The best match
+  #                   grammar will be used if this is unspecified.
   #
   # Returns a String of HTML. The HTML will contains one <div> per line and each
   # line will contain one or more <span> elements for the tokens in the line.
-  highlightFileSync: (filePath, scopeName) ->
-    fileContents = fs.readFileSync(filePath, 'utf8')
+  highlightSync: ({filePath, fileContents, scopeName}={}) ->
+    fileContents ?= fs.readFileSync(filePath, 'utf8') if filePath
     grammar = @registry.grammarForScopeName(scopeName)
     grammar ?= @registry.selectGrammar(filePath, fileContents)
     lineTokens = grammar.tokenizeLines(fileContents)
