@@ -1,0 +1,235 @@
+.editor-colors {
+  background-color: #002b36;
+  color: #839496;
+}
+.editor .invisible-character {
+  color: rgba(101, 123, 131, 0.2);
+}
+.editor .indent-guide {
+  color: rgba(101, 123, 131, 0.2);
+}
+.editor .gutter {
+  background-color: #073642;
+  color: #839496;
+}
+.editor .gutter .line-number {
+  opacity: 1;
+}
+.editor .gutter .line-number.folded,
+.editor .gutter .line-number:after,
+.editor .fold-marker:after {
+  color: #d33682;
+}
+.editor .cursor {
+  border-color: #fdf6e3;
+}
+.editor .selection .region {
+  background-color: #073a47;
+}
+.editor .line-number.cursor-line-no-selection {
+  background-color: #0a4d5e;
+}
+.bracket-matcher {
+  background-color: rgba(88, 110, 117, 0.8);
+  opacity: 0.5;
+}
+.comment {
+  color: #586e75;
+  font-style: italic;
+}
+.entity {
+  color: #b58900;
+}
+.entity .punctuation {
+  color: #dc322f;
+}
+.keyword {
+  color: #859900;
+}
+.keyword.other.special-method {
+  color: #cb4b16;
+}
+.storage.type {
+  color: #859900;
+}
+.constant {
+  color: #b58900;
+}
+.constant.numeric,
+.constant.boolean,
+.constant.symbol,
+.constant.symbol .punctuation {
+  color: #2aa198;
+}
+.constant.symbol.hashkey {
+  color: #dc322f;
+}
+.constant.symbol.hashkey .punctuation {
+  color: #dc322f;
+}
+.delimiter,
+.brace {
+  color: #dc322f;
+}
+.delimiter.period {
+  color: #859900;
+}
+.invalid.deprecated {
+  text-decoration: underline;
+  color: #dc322f;
+}
+.invalid.illegal {
+  color: #dc322f;
+}
+.method .name {
+  color: #268bd2;
+}
+.operator.assignment {
+  color: #93a1a1;
+}
+.parameter {
+  color: #93a1a1;
+}
+.property-name {
+  color: #859900;
+}
+.property-value .unit {
+  color: #839496;
+}
+.string {
+  color: #2aa198;
+}
+.string .constant.character.escape {
+  color: #dc322f;
+}
+.string .punctuation.string {
+  color: #dc322f;
+}
+.string.regexp {
+  color: #2aa198;
+}
+.string.regexp .source.ruby.embedded,
+.string.regexp .string.regexp.arbitrary-repitition {
+  color: #dc322f;
+}
+.variable {
+  color: #2aa198;
+}
+.variable.instance {
+  color: #268bd2;
+}
+.variable.constant {
+  color: #b58900;
+}
+.editor .gfm .markup.italic {
+  font-style: italic;
+}
+.editor .gfm .markup.bold {
+  font-weight: bold;
+}
+.editor .gfm .markup.heading {
+  color: #cb4b16;
+}
+.editor .gfm .link {
+  color: #2aa198;
+}
+.editor .gfm .link .entity {
+  color: #6c71c4;
+}
+.editor .gfm .raw {
+  font-style: italic;
+}
+.editor .gfm.support {
+  color: #dc322f;
+}
+.source.css .entity.name {
+  color: #d33682;
+}
+.source.css .punctuation.section {
+  color: #268bd2;
+}
+.source.css .brace {
+  color: #268bd2;
+}
+.source.css .variable {
+  color: #268bd2;
+}
+.source.ruby .meta.embedded .punctuation.section {
+  color: #dc322f;
+}
+.terminal {
+  background-color: #002b36;
+}
+.terminal .color-0 {
+  color: #839496;
+}
+.terminal .background-0 {
+  background-color: #002b36;
+}
+.terminal .color-1 {
+  color: #dc322f;
+}
+.terminal .background-1 {
+  background-color: #dc322f;
+}
+.terminal .color-2 {
+  color: #859900;
+}
+.terminal .background-2 {
+  background-color: #859900;
+}
+.terminal .color-3 {
+  color: #b58900;
+}
+.terminal .background-3 {
+  background-color: #b58900;
+}
+.terminal .color-4 {
+  color: #268bd2;
+}
+.terminal .background-4 {
+  background-color: #268bd2;
+}
+.terminal .color-5 {
+  color: #d33682;
+}
+.terminal .background-5 {
+  background-color: #d33682;
+}
+.terminal .color-6 {
+  color: #2aa198;
+}
+.terminal .background-6 {
+  background-color: #2aa198;
+}
+.terminal .color-7 {
+  color: #fdf6e3;
+}
+.terminal .background-7 {
+  background-color: #fdf6e3;
+}
+.editor .gutter .git-line-modified {
+  border-left: 2px solid #b58900;
+  padding-left: calc(0.5em - 2px);
+  color: #839496;
+}
+.editor .gutter .git-line-added {
+  border-left: 2px solid #859900;
+  padding-left: calc(0.5em - 2px);
+  color: #839496;
+}
+.editor .gutter .git-line-removed {
+  border-left: 2px solid #dc322f;
+  padding-left: calc(0.5em - 2px);
+  color: #839496;
+}
+.editor .wrap-guide {
+  background-color: #073642;
+}
+.editor .search-results .marker .region {
+  background-color: transparent;
+  border: 1px solid #2aa198;
+}
+.editor .search-results .marker.current-result .region {
+  border: 1px solid #fdf6e3;
+}
