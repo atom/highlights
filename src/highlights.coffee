@@ -41,7 +41,7 @@ class Highlights
       if lastLineTokens.length is 1 and lastLineTokens[0].value is ''
         lineTokens.pop()
 
-    html = '<pre class="editor">'
+    html = '<pre class="editor editor-colors">'
     for tokens in lineTokens
       scopeStack = []
       html += '<div class="line">'
