@@ -4,6 +4,7 @@ Reads in code, writes out HTML with CSS classes based on the tokens in the code.
 
 [![Build Status](https://travis-ci.org/atom/highlights.png)](https://travis-ci.org/atom/highlights)
 
+See it in action [here](http://atom.github.io/highlights/examples).
 
 ### Installing
 
