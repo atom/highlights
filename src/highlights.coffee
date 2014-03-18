@@ -49,7 +49,7 @@ class Highlights
         value = ' ' unless value
         html = @updateScopeStack(scopeStack, scopes, html)
         html += "<span>#{@escapeString(value)}</span>"
-
+      html = @popScope(scopeStack, html) while scopeStack.length > 0
       html += '</div>'
     html += '</pre>'
     html
@@ -68,7 +68,7 @@ class Highlights
   updateScopeStack: (scopeStack, desiredScopes, html) ->
     excessScopes = scopeStack.length - desiredScopes.length
     if excessScopes > 0
-      @popScope(scopeStack) while excessScopes--
+      html = @popScope(scopeStack) while excessScopes--
 
     # pop until common prefix
     for i in [scopeStack.length..0]
