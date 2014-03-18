@@ -5,7 +5,8 @@ Highlights = require './highlights'
 
 module.exports = ->
   cli = optimist.describe('help', 'Show this message').alias('h', 'help')
-                .describe('scope', 'Scope name of the grammar to use').alias('s', 'scopeName')
+                .describe('scope', 'Scope name of the grammar to use').alias('s', 'scope')
+                .describe('output', 'File path to write HTML output to').alias('o', 'output')
   optimist.usage """
     Usage: highlights file
 
@@ -27,7 +28,11 @@ module.exports = ->
       return
 
     html = new Highlights().highlightSync({filePath, scopeName: cli.argv.scope})
-    console.log(html)
+    if cli.argv.output
+      outputPath = path.resolve(cli.argv.output)
+      fs.writeFileSync(outputPath, html)
+    else
+      console.log(html)
   else
     process.stdin.resume()
     process.stdin.setEncoding('utf8')
