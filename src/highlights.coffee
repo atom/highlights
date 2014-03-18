@@ -68,7 +68,7 @@ class Highlights
   updateScopeStack: (scopeStack, desiredScopes, html) ->
     excessScopes = scopeStack.length - desiredScopes.length
     if excessScopes > 0
-      html = @popScope(scopeStack) while excessScopes--
+      html = @popScope(scopeStack, html) while excessScopes--
 
     # pop until common prefix
     for i in [scopeStack.length..0]
