@@ -5,7 +5,7 @@ Highlights = require './highlights'
 
 module.exports = ->
   cli = optimist.describe('help', 'Show this message').alias('h', 'help')
-                .describe('scope', 'Scope name of grammar to use').alias('s', 'scopeName')
+                .describe('scope', 'Scope name of the grammar to use').alias('s', 'scopeName')
   optimist.usage """
     Usage: highlights file
 
