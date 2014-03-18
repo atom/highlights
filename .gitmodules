@@ -1,0 +1,84 @@
+[submodule "deps/language-c"]
+	path = deps/language-c
+	url = https://github.com/atom/language-c
+[submodule "deps/language-coffee-script"]
+	path = deps/language-coffee-script
+	url = https://github.com/atom/language-coffee-script
+[submodule "deps/language-css"]
+	path = deps/language-css
+	url = https://github.com/atom/language-css
+[submodule "deps/language-gfm"]
+	path = deps/language-gfm
+	url = https://github.com/atom/language-gfm
+[submodule "deps/language-git"]
+	path = deps/language-git
+	url = https://github.com/atom/language-git
+[submodule "deps/language-go"]
+	path = deps/language-go
+	url = https://github.com/atom/language-go
+[submodule "deps/language-html"]
+	path = deps/language-html
+	url = https://github.com/atom/language-html
+[submodule "deps/language-hyperlink"]
+	path = deps/language-hyperlink
+	url = https://github.com/atom/language-hyperlink
+[submodule "deps/language-java"]
+	path = deps/language-java
+	url = https://github.com/atom/language-java
+[submodule "deps/language-javascript"]
+	path = deps/language-javascript
+	url = https://github.com/atom/language-javascript
+[submodule "deps/language-json"]
+	path = deps/language-json
+	url = https://github.com/atom/language-json
+[submodule "deps/language-less"]
+	path = deps/language-less
+	url = https://github.com/atom/language-less
+[submodule "deps/language-make"]
+	path = deps/language-make
+	url = https://github.com/atom/language-make
+[submodule "deps/language-objective-c"]
+	path = deps/language-objective-c
+	url = https://github.com/atom/language-objective-c
+[submodule "deps/language-perl"]
+	path = deps/language-perl
+	url = https://github.com/atom/language-perl
+[submodule "deps/language-php"]
+	path = deps/language-php
+	url = https://github.com/atom/language-php
+[submodule "deps/language-property-list"]
+	path = deps/language-property-list
+	url = https://github.com/atom/language-property-list
+[submodule "deps/language-python"]
+	path = deps/language-python
+	url = https://github.com/atom/language-python
+[submodule "deps/language-ruby"]
+	path = deps/language-ruby
+	url = https://github.com/atom/language-ruby
+[submodule "deps/language-ruby-on-rails"]
+	path = deps/language-ruby-on-rails
+	url = https://github.com/atom/language-ruby-on-rails
+[submodule "deps/language-sass"]
+	path = deps/language-sass
+	url = https://github.com/atom/language-sass
+[submodule "deps/language-shellscript"]
+	path = deps/language-shellscript
+	url = https://github.com/atom/language-shellscript
+[submodule "deps/language-sql"]
+	path = deps/language-sql
+	url = https://github.com/atom/language-sql
+[submodule "deps/language-text"]
+	path = deps/language-text
+	url = https://github.com/atom/language-text
+[submodule "deps/language-todo"]
+	path = deps/language-todo
+	url = https://github.com/atom/language-todo
+[submodule "deps/language-toml"]
+	path = deps/language-toml
+	url = https://github.com/atom/language-toml
+[submodule "deps/language-xml"]
+	path = deps/language-xml
+	url = https://github.com/atom/language-xml
+[submodule "deps/language-yaml"]
+	path = deps/language-yaml
+	url = https://github.com/atom/language-yaml

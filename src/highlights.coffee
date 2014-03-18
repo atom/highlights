@@ -1,3 +1,4 @@
+path = require 'path'
 _ = require 'underscore-plus'
 fs = require 'fs-plus'
 {GrammarRegistry} = require 'first-mate'
@@ -6,6 +7,15 @@ module.exports =
 class Highlights
   constructor: ->
     @registry = new GrammarRegistry()
+
+  loadGrammarsSync: ->
+    return if @registry.grammars.length > 1
+
+    depsDir = path.resolve(__dirname, '..', 'deps')
+    for grammar in fs.readdirSync(depsDir)
+      grammarsDir = path.join(depsDir, grammar, 'grammars')
+      for file in fs.readdirSync(grammarsDir)
+        @registry.loadGrammarSync(path.join(grammarsDir, file))
 
   # Public: Syntax highlight the given file synchronously.
   #
@@ -20,6 +30,8 @@ class Highlights
   # per line and each line will contain one or more <span> elements for the
   # tokens in the line.
   highlightSync: ({filePath, fileContents, scopeName}={}) ->
+    @loadGrammarsSync()
+
     fileContents ?= fs.readFileSync(filePath, 'utf8') if filePath
     grammar = @registry.grammarForScopeName(scopeName)
     grammar ?= @registry.selectGrammar(filePath, fileContents)
@@ -58,7 +70,7 @@ class Highlights
   updateScopeStack: (scopeStack, desiredScopes, html) ->
     excessScopes = scopeStack.length - desiredScopes.length
     if excessScopes > 0
-      popScope(scopeStack) while excessScopes--
+      @popScope(scopeStack) while excessScopes--
 
     # pop until common prefix
     for i in [scopeStack.length..0]
