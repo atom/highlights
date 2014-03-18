@@ -12,7 +12,6 @@ module.exports = ->
     Output the syntax highlighted HTML for a file.
   """
 
-
   if cli.argv.help
     cli.showHelp()
     return
