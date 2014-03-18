@@ -5,8 +5,9 @@ Highlights = require './highlights'
 
 module.exports = ->
   cli = optimist.describe('h', 'Show this message').alias('h', 'help')
-                .describe('s', 'Scope name of the grammar to use').alias('s', 'scope').string('s')
                 .describe('o', 'File path to write the HTML output to').alias('o', 'output').string('o')
+                .describe('s', 'Scope name of the grammar to use').alias('s', 'scope').string('s')
+                .describe('v', 'Output the version').alias('v', 'version').boolean('s')
   optimist.usage """
     Usage: highlights [options] [file]
 
@@ -17,6 +18,11 @@ module.exports = ->
 
   if cli.argv.help
     cli.showHelp()
+    return
+
+  if cli.argv.version
+    {version} = require '../package.json'
+    console.log(version)
     return
 
   [filePath] = cli.argv._
