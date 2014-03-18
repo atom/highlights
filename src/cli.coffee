@@ -13,7 +13,7 @@ module.exports = ->
 
     Output the syntax highlighted HTML for a file.
 
-    If no file is specified then the text of highlight is read from standard in.
+    If no file is specified then the text to highlight is read from standard in.
   """
 
   if cli.argv.help
