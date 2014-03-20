@@ -14,9 +14,30 @@ npm install highlights
 
 ### Using
 
+To convert a source file to a tokenized HTML run the following:
+
 ```sh
 highlights file.coffee -o file.html
 ```
+
+Now you have a `file.html` file that is a big `<pre>` tag with a `<div>` for
+each line with a `<span>` for each token.
+
+Then you can compile an existing Atom theme into a stylesheet with the
+following:
+
+```sh
+git clone https://github.com/atom/atom-dark-syntax
+cd atom-dark-syntax
+npm install -g less
+lessc --include-path=stylesheets index.less atom-dark-syntax.css
+```
+
+Now you have an `atom-dark-syntax.css` stylesheet that be combined with
+the `file.html` file to generate some nice looking code.
+
+Check out the [examples](http://atom.github.io/highlights/examples) to see
+it in action.
 
 Run `highlights -h` for full details about the supported options.
 
