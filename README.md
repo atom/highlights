@@ -39,6 +39,8 @@ the `file.html` file to generate some nice looking code.
 Check out the [examples](http://atom.github.io/highlights/examples) to see
 it in action.
 
+Check out [atom.io](https://atom.io/packages) to find more themes.
+
 Run `highlights -h` for full details about the supported options.
 
 ### Developing
