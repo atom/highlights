@@ -17,6 +17,7 @@ module.exports = (grunt) ->
         max_line_length:
           level: 'ignore'
 
+      gruntfile: ['Gruntfile.coffee']
       src: ['src/*.coffee']
       test: ['spec/*.coffee']
 
@@ -37,7 +38,7 @@ module.exports = (grunt) ->
     grunt.file.delete('lib') if grunt.file.exists('lib')
     grunt.file.delete('gen') if grunt.file.exists('gen')
 
-  grunt.registerTask('lint', ['coffeelint:src', 'coffeelint:test'])
+  grunt.registerTask('lint', ['coffeelint'])
   grunt.registerTask('default', ['coffeelint', 'coffee'])
   grunt.registerTask('test', ['default', 'lint', 'shell:test'])
   grunt.registerTask('prepublish', ['clean', 'build-grammars', 'test'])
