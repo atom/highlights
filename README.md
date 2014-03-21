@@ -65,7 +65,7 @@ Outputs:
 
 * Clone this repository `git clone https://github.com/atom/highlights`
 * Run `npm install` to install the dependencies, compile the CoffeeScript, and
-  build the grammars.
+  build the grammars
 * Run `npm test` to run the specs
 
 :green_heart: Pull requests are greatly appreciated and welcomed.
