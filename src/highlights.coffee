@@ -13,7 +13,9 @@ class Highlights
 
     grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
     for grammarPath, grammar of JSON.parse(fs.readFileSync(grammarsPath))
-      @registry.addGrammar(@registry.createGrammar(grammarPath, grammar))
+      grammar = @registry.createGrammar(grammarPath, grammar)
+      grammar.maxTokensPerLine = Infinity
+      @registry.addGrammar(grammar)
 
   # Public: Syntax highlight the given file synchronously.
   #
