@@ -20,8 +20,8 @@ To convert a source file to tokenized HTML run the following:
 highlights file.coffee -o file.html
 ```
 
-Now you have a `file.html` file that is a big `<pre>` tag with a `<div>` for
-each line with a `<span>` for each token.
+Now you have a `file.html` file that has a big `<pre>` tag with a `<div>` for
+each line with `<span>` elements for each token.
 
 Then you can compile an existing Atom theme into a stylesheet with the
 following:
