@@ -45,7 +45,7 @@ Run `highlights -h` for full details about the supported options.
 
 ### Developing
 
-* Close this repository
+* Clone this repository `git clone https://github.com/atom/highlights`
 * Run `npm install` to install the dependencies, compile the CoffeeScript, and
   build the grammars.
 * Run `npm test` to run the specs
