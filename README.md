@@ -48,7 +48,7 @@ Run `highlights -h` for full details about the supported options.
 ```coffee
 Highlights = require 'highlights'
 highlighter = new Highlights()
-html = highlight.highlightSync
+html = highlighter.highlightSync
   fileContents: 'var hello = "world";'
   scopeName: 'source.js'
 
