@@ -43,6 +43,24 @@ Check out [atom.io](https://atom.io/packages) to find more themes.
 
 Run `highlights -h` for full details about the supported options.
 
+#### Using in code
+
+```coffee
+Highlights = require 'highlights'
+highlighter = new Highlights()
+html = highlight.highlightSync
+  fileContents: 'var hello = "world";'
+  scopeName: 'source.js'
+
+console.log html
+```
+
+Outputs:
+
+```html
+<pre class="editor editor-colors"><div class="line"><span class="source js"><span class="storage modifier js"><span>var</span></span><span>&nbsp;hello&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="string quoted double js"><span class="punctuation definition string begin js"><span>&quot;</span></span><span>world</span><span class="punctuation definition string end js"><span>&quot;</span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+```
+
 ### Developing
 
 * Clone this repository `git clone https://github.com/atom/highlights`
