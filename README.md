@@ -14,7 +14,7 @@ npm install highlights
 
 ### Using
 
-To convert a source file to a tokenized HTML run the following:
+To convert a source file to tokenized HTML run the following:
 
 ```sh
 highlights file.coffee -o file.html
