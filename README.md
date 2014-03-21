@@ -46,7 +46,8 @@ Run `highlights -h` for full details about the supported options.
 ### Developing
 
 * Close this repository
-* Run `npm install`
+* Run `npm install` to install the dependencies, compile the CoffeeScript, and
+  build the grammars.
 * Run `npm test` to run the specs
 
 :green_heart: Pull requests are greatly appreciated and welcomed.
