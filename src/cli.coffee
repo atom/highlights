@@ -29,6 +29,10 @@ module.exports = ->
     return
 
   [filePath] = cli.argv._
+
+  outputPath = cli.argv.output
+  outputPath = path.resolve(outputPath) if outputPath
+
   if filePath
     filePath = path.resolve(filePath)
     unless fs.isFileSync(filePath)
@@ -37,8 +41,7 @@ module.exports = ->
       return
 
     html = new Highlights().highlightSync({filePath, scopeName: cli.argv.scope})
-    if cli.argv.output
-      outputPath = path.resolve(cli.argv.output)
+    if outputPath
       fs.writeFileSync(outputPath, html)
     else
       console.log(html)
@@ -49,4 +52,7 @@ module.exports = ->
     process.stdin.on 'data', (chunk) -> fileContents += chunk.toString()
     process.stdin.on 'end', ->
       html = new Highlights().highlightSync({fileContents, scopeName: cli.argv.scope})
-      console.log(html)
+      if outputPath
+        fs.writeFileSync(outputPath, html)
+      else
+        console.log(html)
