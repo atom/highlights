@@ -5,14 +5,27 @@ fs = require 'fs-plus'
 
 module.exports =
 class Highlights
-  constructor: ->
+  # Public: Create a new highlighter.
+  #
+  # options - An Object with the following keys:
+  #   :includePath - An optional String path to a file or folder of grammars to
+  #                  register.
+  constructor: ({@includePath}={})->
     @registry = new GrammarRegistry(maxTokensPerLine: Infinity)
 
   loadGrammarsSync: ->
     return if @registry.grammars.length > 1
 
+    if typeof @includePath is 'string'
+      if fs.isFileSync(@includePath)
+        @registry.loadGrammarSync(@includePath)
+      else if fs.isDirectorySync(@includePath)
+        for filePath in fs.listSync(@includePath, ['cson', 'json'])
+          @registry.loadGrammarSync(filePath)
+
     grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
     for grammarPath, grammar of JSON.parse(fs.readFileSync(grammarsPath))
+      continue if @registry.grammarForScopeName(grammar.scopeName)?
       grammar = @registry.createGrammar(grammarPath, grammar)
       @registry.addGrammar(grammar)
 

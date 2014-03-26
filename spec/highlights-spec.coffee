@@ -1,6 +1,23 @@
+path = require 'path'
 Highlights = require '../src/highlights'
 
 describe "Highlights", ->
+  describe "when an includePath is specified", ->
+    it "includes the grammar when the path is a file", ->
+      highlights = new Highlights(includePath: path.join(__dirname, 'fixtures', 'includes'))
+      html = highlights.highlightSync(fileContents: 'test', scopeName: 'include1')
+      expect(html).toBe '<pre class="editor editor-colors"><div class="line"><span class="include1"><span>test</span></span></div></pre>'
+
+    it "includes the grammars when the path is a directory", ->
+      highlights = new Highlights(includePath: path.join(__dirname, 'fixtures', 'includes', 'include1.cson'))
+      html = highlights.highlightSync(fileContents: 'test', scopeName: 'include1')
+      expect(html).toBe '<pre class="editor editor-colors"><div class="line"><span class="include1"><span>test</span></span></div></pre>'
+
+    it "overrides built-in grammars", ->
+      highlights = new Highlights(includePath: path.join(__dirname, 'fixtures', 'includes'))
+      html = highlights.highlightSync(fileContents: 's = "test"', scopeName: 'source.coffee')
+      expect(html).toBe '<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>s&nbsp;=&nbsp;&quot;test&quot;</span></span></div></pre>'
+
   describe "highlightSync", ->
     it "returns an HTML string", ->
       highlights = new Highlights()
