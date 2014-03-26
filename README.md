@@ -14,6 +14,8 @@ npm install highlights
 
 ### Using
 
+Run `highlights -h` for full details about the supported options.
+
 To convert a source file to tokenized HTML run the following:
 
 ```sh
@@ -41,7 +43,11 @@ it in action.
 
 Check out [atom.io](https://atom.io/packages) to find more themes.
 
-Run `highlights -h` for full details about the supported options.
+Some popular themes:
+  * [atom-dark-syntax](https://github.com/atom/atom-dark-syntax)
+  * [atom-light-syntax](https://github.com/atom/atom-light-syntax)
+  * [solarized-dark-syntax](https://github.com/atom/solarized-dark-syntax)
+  * [solarized-light-syntax](https://github.com/atom/solarized-light-syntax)
 
 #### Using in code
 
