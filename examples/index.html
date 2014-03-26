@@ -7,11 +7,11 @@
 
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="atom-dark.css" type="theme" label="Atom Dark">
-    <link rel="stylesheet" href="atom-light.css" disabled="disabled" type="theme" label="Atom Light">
-    <link rel="stylesheet" href="solarized-dark.css" disabled="disabled" type="theme" label="Solarized Dark">
-    <link rel="stylesheet" href="solarized-light.css" disabled="disabled" type="theme" label="Solarized Light">
-    <link rel="stylesheet" href="monokai.css" disabled="disabled" type="theme" label="Monokai">
+    <link rel="stylesheet" href="atom-dark.css" theme="theme" label="Atom Dark">
+    <link rel="stylesheet" href="atom-light.css" disabled="disabled" theme="theme" label="Atom Light">
+    <link rel="stylesheet" href="solarized-dark.css" disabled="disabled" theme="theme" label="Solarized Dark">
+    <link rel="stylesheet" href="solarized-light.css" disabled="disabled" theme="theme" label="Solarized Light">
+    <link rel="stylesheet" href="monokai.css" disabled="disabled" theme="theme" label="Monokai">
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script>
@@ -26,7 +26,7 @@
     <script type="text/coffeescript">
       $ ->
         $('.nav a').click ({target}) ->
-          $('link[type="theme"]').attr('disabled', 'disabled')
+          $('link[theme="theme"]').attr('disabled', 'disabled')
           $("link[label=\"#{$(target).text()}\"]").removeAttr('disabled')
           $('li.active').removeClass('active')
           $(target).closest('li').addClass('active')
