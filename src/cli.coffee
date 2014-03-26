@@ -8,7 +8,7 @@ module.exports = ->
                 .describe('i', 'Path to file or folder of grammars to include').alias('i', 'include').string('i')
                 .describe('o', 'File path to write the HTML output to').alias('o', 'output').string('o')
                 .describe('s', 'Scope name of the grammar to use').alias('s', 'scope').string('s')
-                .describe('v', 'Output the version').alias('v', 'version').boolean('s')
+                .describe('v', 'Output the version').alias('v', 'version').boolean('v')
   optimist.usage """
     Usage: highlights [options] [file]
 
