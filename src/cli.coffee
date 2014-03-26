@@ -14,7 +14,7 @@ module.exports = ->
 
     Output the syntax highlighted HTML for a file.
 
-    If no file is specified then the text to highlight is read from standard in.
+    If no input file is specified then the text to highlight is read from standard in.
 
     If no output file is specified then the HTML is written to standard out.
   """
