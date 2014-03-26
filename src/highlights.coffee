@@ -6,7 +6,7 @@ fs = require 'fs-plus'
 module.exports =
 class Highlights
   constructor: ->
-    @registry = new GrammarRegistry()
+    @registry = new GrammarRegistry(maxTokensPerLine: Infinity)
 
   loadGrammarsSync: ->
     return if @registry.grammars.length > 1
@@ -14,7 +14,6 @@ class Highlights
     grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
     for grammarPath, grammar of JSON.parse(fs.readFileSync(grammarsPath))
       grammar = @registry.createGrammar(grammarPath, grammar)
-      grammar.maxTokensPerLine = Infinity
       @registry.addGrammar(grammar)
 
   # Public: Syntax highlight the given file synchronously.
