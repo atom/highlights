@@ -26,7 +26,7 @@
     <script type="text/coffeescript">
       $ ->
         enableThemeStylesheet = (themeName) ->
-          if document.styleSheets
+          if document.styleSheets and navigator.userAgent.indexOf('Firefox') isnt -1
             for stylesheet in document.styleSheets when stylesheet.title
               stylesheet.disabled = stylesheet.title isnt themeName
 
