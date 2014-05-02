@@ -64,7 +64,22 @@ console.log html
 Outputs:
 
 ```html
-<pre class="editor editor-colors"><div class="line"><span class="source js"><span class="storage modifier js"><span>var</span></span><span>&nbsp;hello&nbsp;</span><span class="keyword operator js"><span>=</span></span><span>&nbsp;</span><span class="string quoted double js"><span class="punctuation definition string begin js"><span>&quot;</span></span><span>world</span><span class="punctuation definition string end js"><span>&quot;</span></span></span><span class="punctuation terminator statement js"><span>;</span></span></span></div></pre>
+<pre class="editor editor-colors">
+  <div class="line">
+    <span class="source js">
+      <span class="storage modifier js"><span>var</span></span>
+      <span>&nbsp;hello&nbsp;</span>
+      <span class="keyword operator js"><span>=</span></span>
+      <span>&nbsp;</span>
+      <span class="string quoted double js">
+        <span class="punctuation definition string begin js"><span>&quot;</span></span>
+        <span>world</span>
+        <span class="punctuation definition string end js"><span>&quot;</span></span>
+      </span>
+      <span class="punctuation terminator statement js"><span>;</span></span>
+    </span>
+  </div>
+</pre>
 ```
 
 ### Developing
