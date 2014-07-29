@@ -20,7 +20,7 @@
   "dependencies": {
     "first-mate": "^2.0.2",
     "optimist": "^0.6.1",
-    "underscore-plus": "^1.0.5",
+    "underscore-plus": "^1.5.1",
     "fs-plus": "^2.0.4"
   },
   "devDependencies": {
