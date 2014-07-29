@@ -10,8 +10,9 @@ class Highlights
   # options - An Object with the following keys:
   #   :includePath - An optional String path to a file or folder of grammars to
   #                  register.
-  constructor: ({@includePath}={})->
-    @registry = new GrammarRegistry(maxTokensPerLine: Infinity)
+  #   :registry    - An optional GrammarRegistry instance.
+  constructor: ({@includePath, @registry}={}) ->
+    @registry ?= new GrammarRegistry(maxTokensPerLine: Infinity)
 
   loadGrammarsSync: ->
     return if @registry.grammars.length > 1
