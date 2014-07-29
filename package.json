@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/atom/highlights",
   "dependencies": {
-    "first-mate": "^1.6.1",
+    "first-mate": "^2.0.2",
     "optimist": "^0.6.1",
     "underscore-plus": "^1.0.5",
     "fs-plus": "^2.0.4"
