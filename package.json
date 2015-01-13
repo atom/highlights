@@ -30,6 +30,6 @@
     "grunt-cli": "^0.1.13",
     "grunt-shell": "^0.6.4",
     "grunt-coffeelint": "0.0.8",
-    "season": "^2.0"
+    "season": "^5.0.2"
   }
 }
