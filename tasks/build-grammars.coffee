@@ -8,8 +8,11 @@ module.exports = (grunt) ->
     depsDir = path.resolve(__dirname, '..', 'deps')
     for packageDir in fs.readdirSync(depsDir)
       grammarsDir = path.join(depsDir, packageDir, 'grammars')
+      continue unless fs.isDirectorySync(grammarsDir)
+
       for file in fs.readdirSync(grammarsDir)
         grammarPath = path.join(grammarsDir, file)
+        continue unless CSON.resolve(grammarPath)
         grammar = CSON.readFileSync(grammarPath)
         grammars[grammarPath] = grammar
 
