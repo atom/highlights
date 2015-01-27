@@ -6,7 +6,7 @@
   "scripts": {
     "test": "grunt test",
     "prepublish": "grunt prepublish",
-    "preinstall": "git submodule init && git submodule update"
+    "pretest": "git submodule update --init --recursive"
   },
   "bin": "bin/highlights",
   "repository": {
