@@ -82,6 +82,22 @@ Outputs:
 </pre>
 ```
 
+### Loading Grammars From Modules
+
+highlights exposes the method `requireGrammarsSync`, for loading grammars from
+npm modules. The usage is as follows:
+
+```bash
+npm install atom-language-clojure
+```
+
+```coffee
+Highlights = require 'highlights'
+highlighter = new Highlights()
+highlighter.requireGrammarsSync
+  modulePath: require.resolve('atom-language-clojure/package.json')
+```
+
 ### Developing
 
 * Clone this repository `git clone https://github.com/atom/highlights`

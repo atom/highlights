@@ -22,15 +22,16 @@
     "first-mate": "^3.0.0",
     "optimist": "^0.6.1",
     "underscore-plus": "^1.5.1",
-    "fs-plus": "^2.2.6"
+    "fs-plus": "^2.2.6",
+    "season": "^5.1.2"
   },
   "devDependencies": {
-    "jasmine-focused": "^1.0.4",
     "grunt": "^0.4.4",
-    "grunt-contrib-coffee": "^0.10.1",
     "grunt-cli": "^0.1.13",
-    "grunt-shell": "^0.6.4",
     "grunt-coffeelint": "0.0.8",
-    "season": "^5.0.2"
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-shell": "^0.6.4",
+    "jasmine-focused": "^1.0.4",
+    "atom-language-clojure": "^0.10.0"
   }
 }

@@ -33,3 +33,16 @@ describe "Highlights", ->
       highlights = new Highlights()
       html = highlights.highlightSync(fileContents: 'test', filePath: 'test.coffee')
       expect(html).toBe '<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>test</span></span></div></pre>'
+
+  describe "requireGrammarsSync", ->
+    it "loads a grammar from an npm module", ->
+      highlights = new Highlights()
+      highlights.requireGrammarsSync(modulePath: require.resolve('atom-language-clojure/package.json'))
+      html = highlights.highlightSync(fileContents: '(def ^:dynamic chunk-size 17)', scopeName: 'source.clojure')
+      expect(html).toContain '<span class="meta expression clojure">'
+
+    it "loads default grammars prior to loading grammar from module", ->
+      highlights = new Highlights()
+      highlights.requireGrammarsSync(modulePath: require.resolve('atom-language-clojure/package.json'))
+      html = highlights.highlightSync(fileContents: 'test', scopeName: 'source.coffee')
+      expect(html).toBe '<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>test</span></span></div></pre>'
