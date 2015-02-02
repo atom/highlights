@@ -82,3 +82,6 @@
 [submodule "deps/language-yaml"]
 	path = deps/language-yaml
 	url = https://github.com/atom/language-yaml
+[submodule "deps/language-lisp"]
+	path = deps/language-lisp
+	url = https://github.com/enriquefernandez/language-lisp
