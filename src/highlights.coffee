@@ -1,6 +1,7 @@
 path = require 'path'
 _ = require 'underscore-plus'
 fs = require 'fs-plus'
+CSON = require 'season'
 {GrammarRegistry} = require 'first-mate'
 
 module.exports =
@@ -29,6 +30,21 @@ class Highlights
       continue if @registry.grammarForScopeName(grammar.scopeName)?
       grammar = @registry.createGrammar(grammarPath, grammar)
       @registry.addGrammar(grammar)
+
+  # Public: allows grammars to be loaded from
+  #   an npm module.
+  #  :modulePath - the path to the module to require.
+  requireGrammarsSync: ({modulePath}={}) ->
+    @loadGrammarsSync()
+
+    packageDir = path.dirname(modulePath)
+    grammarsDir = path.resolve(packageDir, 'grammars')
+
+    return unless fs.isDirectorySync(grammarsDir)
+
+    for file in fs.readdirSync(grammarsDir)
+      if grammarPath = CSON.resolve(path.join(grammarsDir, file))
+        @registry.loadGrammarSync(grammarPath)
 
   # Public: Syntax highlight the given file synchronously.
   #
