@@ -31,13 +31,20 @@ class Highlights
       grammar = @registry.createGrammar(grammarPath, grammar)
       @registry.addGrammar(grammar)
 
-  # Public: allows grammars to be loaded from
-  #   an npm module.
-  #  :modulePath - the path to the module to require.
+  # Public: Require all the grammars from the grammars folder at the root of an
+  #   npm module.
+  #
+  # modulePath - the String path to the module to require grammars from. If the
+  #              given path is a file then the grammars folder from the parent
+  #              directory will be used.
   requireGrammarsSync: ({modulePath}={}) ->
     @loadGrammarsSync()
 
-    packageDir = path.dirname(modulePath)
+    if fs.isFileSync(modulePath)
+      packageDir = path.dirname(modulePath)
+    else
+      packageDir = modulePath
+
     grammarsDir = path.resolve(packageDir, 'grammars')
 
     return unless fs.isDirectorySync(grammarsDir)
