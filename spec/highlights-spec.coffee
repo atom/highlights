@@ -38,14 +38,12 @@ describe "Highlights", ->
     it "loads the grammars from a file-based npm module path", ->
       highlights = new Highlights()
       highlights.requireGrammarsSync(modulePath: require.resolve('atom-language-clojure/package.json'))
-      html = highlights.highlightSync(fileContents: '(def ^:dynamic chunk-size 17)', scopeName: 'source.clojure')
-      expect(html).toContain '<span class="meta expression clojure">'
+      expect(highlights.registry.grammarForScopeName('source.clojure').path).toBe path.resolve(__dirname, '..', 'node_modules', 'atom-language-clojure', 'grammars', 'clojure.cson')
 
     it "loads the grammars from a folder-based npm module path", ->
       highlights = new Highlights()
       highlights.requireGrammarsSync(modulePath: path.resolve(__dirname, '..', 'node_modules', 'atom-language-clojure'))
-      html = highlights.highlightSync(fileContents: '(def ^:dynamic chunk-size 17)', scopeName: 'source.clojure')
-      expect(html).toContain '<span class="meta expression clojure">'
+      expect(highlights.registry.grammarForScopeName('source.clojure').path).toBe path.resolve(__dirname, '..', 'node_modules', 'atom-language-clojure', 'grammars', 'clojure.cson')
 
     it "loads default grammars prior to loading grammar from module", ->
       highlights = new Highlights()
