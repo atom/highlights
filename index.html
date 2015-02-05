@@ -32,7 +32,7 @@
 
 <p>Reads in code, writes out HTML with CSS classes based on the tokens in the code.</p>
 
-<p><a href="https://travis-ci.org/atom/highlights"><img src="https://travis-ci.org/atom/highlights.svg" alt="Build Status"></a></p>
+<p><a href="https://travis-ci.org/atom/highlights"><img src="https://travis-ci.org/atom/highlights.svg?branch=master" alt="Build Status"></a></p>
 
 <p>See it in action <a href="http://atom.github.io/highlights/examples">here</a>.</p>
 
@@ -109,10 +109,25 @@ it in action.</p>
 &lt;/<span class="pl-ent">pre</span>&gt;</pre></div>
 
 <h3>
+<a id="loading-grammars-from-modules" class="anchor" href="#loading-grammars-from-modules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Loading Grammars From Modules</h3>
+
+<p>highlights exposes the method <code>requireGrammarsSync</code>, for loading grammars from
+npm modules. The usage is as follows:</p>
+
+<div class="highlight highlight-bash"><pre>npm install atom-language-clojure</pre></div>
+
+<div class="highlight highlight-coffee"><pre><span class="pl-v"><span class="pl-v">Highlights <span class="pl-k">=</span></span></span> <span class="pl-s3">require</span> <span class="pl-s1"><span class="pl-pds">'</span>highlights<span class="pl-pds">'</span></span>
+<span class="pl-v"><span class="pl-v">highlighter <span class="pl-k">=</span></span></span> <span class="pl-k">new</span> <span class="pl-en">Highlights</span>()
+highlighter.requireGrammarsSync
+  <span class="pl-v"><span class="pl-v">modulePath:</span></span> <span class="pl-s3">require</span>.resolve(<span class="pl-s1"><span class="pl-pds">'</span>atom-language-clojure/package.json<span class="pl-pds">'</span></span>)</pre></div>
+
+<h3>
 <a id="developing" class="anchor" href="#developing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Developing</h3>
 
 <ul>
 <li>Clone this repository <code>git clone https://github.com/atom/highlights</code>
+</li>
+<li>Update the submodules by running <code>git submodule update --init --recursive</code>
 </li>
 <li>Run <code>npm install</code> to install the dependencies, compile the CoffeeScript, and
 build the grammars</li>
