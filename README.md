@@ -4,7 +4,7 @@ Reads in code, writes out HTML with CSS classes based on the tokens in the code.
 
 [![Build Status](https://travis-ci.org/atom/highlights.svg?branch=master)](https://travis-ci.org/atom/highlights)
 
-See it in action [here](http://atom.github.io/highlights/examples).
+See it in action [here](https://atom.github.io/highlights/examples).
 
 ### Installing
 
@@ -38,7 +38,7 @@ lessc --include-path=stylesheets index.less atom-dark-syntax.css
 Now you have an `atom-dark-syntax.css` stylesheet that be combined with
 the `file.html` file to generate some nice looking code.
 
-Check out the [examples](http://atom.github.io/highlights/examples) to see
+Check out the [examples](https://atom.github.io/highlights/examples) to see
 it in action.
 
 Check out [atom.io](https://atom.io/packages) to find more themes.
