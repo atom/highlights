@@ -32,6 +32,6 @@
     "grunt-contrib-coffee": "^0.10.1",
     "grunt-shell": "^0.6.4",
     "jasmine-focused": "^1.0.4",
-    "atom-language-clojure": "^0.10.0"
+    "language-erlang": "^2.0.0"
   }
 }

@@ -37,16 +37,16 @@ describe "Highlights", ->
   describe "requireGrammarsSync", ->
     it "loads the grammars from a file-based npm module path", ->
       highlights = new Highlights()
-      highlights.requireGrammarsSync(modulePath: require.resolve('atom-language-clojure/package.json'))
-      expect(highlights.registry.grammarForScopeName('source.clojure').path).toBe path.resolve(__dirname, '..', 'node_modules', 'atom-language-clojure', 'grammars', 'clojure.cson')
+      highlights.requireGrammarsSync(modulePath: require.resolve('language-erlang/package.json'))
+      expect(highlights.registry.grammarForScopeName('source.erlang').path).toBe path.resolve(__dirname, '..', 'node_modules', 'language-erlang', 'grammars', 'erlang.cson')
 
     it "loads the grammars from a folder-based npm module path", ->
       highlights = new Highlights()
-      highlights.requireGrammarsSync(modulePath: path.resolve(__dirname, '..', 'node_modules', 'atom-language-clojure'))
-      expect(highlights.registry.grammarForScopeName('source.clojure').path).toBe path.resolve(__dirname, '..', 'node_modules', 'atom-language-clojure', 'grammars', 'clojure.cson')
+      highlights.requireGrammarsSync(modulePath: path.resolve(__dirname, '..', 'node_modules', 'language-erlang'))
+      expect(highlights.registry.grammarForScopeName('source.erlang').path).toBe path.resolve(__dirname, '..', 'node_modules', 'language-erlang', 'grammars', 'erlang.cson')
 
     it "loads default grammars prior to loading grammar from module", ->
       highlights = new Highlights()
-      highlights.requireGrammarsSync(modulePath: require.resolve('atom-language-clojure/package.json'))
+      highlights.requireGrammarsSync(modulePath: require.resolve('language-erlang/package.json'))
       html = highlights.highlightSync(fileContents: 'test', scopeName: 'source.coffee')
       expect(html).toBe '<pre class="editor editor-colors"><div class="line"><span class="source coffee"><span>test</span></span></div></pre>'
