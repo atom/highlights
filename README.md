@@ -32,7 +32,7 @@ following:
 git clone https://github.com/atom/atom-dark-syntax
 cd atom-dark-syntax
 npm install -g less
-lessc --include-path=stylesheets index.less atom-dark-syntax.css
+lessc --include-path=styles index.less atom-dark-syntax.css
 ```
 
 Now you have an `atom-dark-syntax.css` stylesheet that be combined with
