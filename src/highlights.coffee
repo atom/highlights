@@ -54,7 +54,7 @@ class Highlights
   # per line and each line will contain one or more <span> elements for the
   # tokens in the line. All grammar loading and fs operations are async so you can use this module in a server or busy process.
   highlight: ({filePath, fileContents, scopeName}={},cb) ->
-    @loadGrammars((err) ->
+    @loadGrammars((err) =>
       if err
         return cb(err)
 
@@ -206,12 +206,12 @@ class Highlights
     cb = once(cb)
 
     if @_loadingGrammars == true
-      return setImmeidate(cb)
+      return setImmediate(cb)
     else if Array.isArray(@_loadingGrammars)
       return @_loadingGrammars.push(cb)
 
     @_loadingGrammars = [cb]
-    callbacks = (err)->
+    callbacks = (err)=>
       cbs = @_loadingGrammars
       @_loadingGrammars = true
       while cbs.length
@@ -221,7 +221,7 @@ class Highlights
     grammarsFromJSON = null
     grammarsArray = null
 
-    done = (err,paths) ->
+    done = (err,paths) =>
       if err
         return callbacks(err)
       if !--c
@@ -241,7 +241,7 @@ class Highlights
     toLoad = grammarsArray.length
     grammars = []
 
-    done = (err,grammar)->
+    done = (err,grammar)=>
       if err
         return cb(err)
 
@@ -262,13 +262,15 @@ class Highlights
   _findGrammars: (cb)->
 
     if typeof @includePath is 'string'
-      fs.stat(@includePath, (err, stat)->
+      fs.stat(@includePath, (err, stat)=>
         if err
           return cb(err)
         if stat.isFile()
           cb(false,[@includePath])
         else if stat.isDirectory()
-          fs.list(@includePath,['cson','json'], cb)
+          fs.list(@includePath,['cson','json'], (err,list)=>
+            cb(err,list||[])
+          )
         else
           cb(new Error('unsupported file type.'))
       )
@@ -277,6 +279,7 @@ class Highlights
   _loadGrammarsJSON: (cb)->
     grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
     fs.readFile(grammarsPath, (err,contents)->
+
       try
         cb(false,JSON.parse(contents))
       catch err
