@@ -207,7 +207,7 @@ class Highlights
 
     cb = once(cb)
 
-    if @_loadingGrammars == true
+    if @_loadingGrammars == true or @registry.grammars.length > 1
       return setImmediate(cb)
     else if Array.isArray(@_loadingGrammars)
       return @_loadingGrammars.push(cb)
