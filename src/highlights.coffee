@@ -100,11 +100,19 @@ class Highlights
   # cb(err) - The callback so you know when it's done
   #
   requireGrammars: ({modulePath}={},cb) ->
-    @loadGrammars((err)->
+    console.log('REQUIRE GRAMMARS: start')
+    @loadGrammars((err)=>
+
+      console.log('REQURE GRAMMARS: load grammars error? ',err)
+
       if err
         return cb(err)
       
-      fs.stat(modulePath,(err,stat)->
+      fs.stat(modulePath,(err,stat)=>
+
+        console.log('REQUIRE GRAMMARS: stat')
+        console.log('fs.stats on modulePath!!!!!! -------->',stat)
+
         if err
           return cb(err)
 
@@ -113,10 +121,13 @@ class Highlights
         else if stat.isDirectory()
           packageDir = modulePath
         else
-          # return with no error at all if i cant find the module dir...... copying the sync impl. =(
+          # return with no error at all if i cant find the module dir.
           return cb()
 
-        @_registryLoadGrammarsDir(packageDir,cb)
+
+        grammarsDir = path.resolve(packageDir, 'grammars')
+        console.log('grammarsDir  --------> ',grammarsDir)
+        @_registryLoadGrammarsDir(grammarsDir,cb)
 
       )
 
@@ -131,21 +142,23 @@ class Highlights
       if !--todo
         cb()
 
-    fs.readdir(dir, (err, files)->
+    fs.readdir(dir, (err, files)=>
       if err
         return cb(err)
       todo = files.length
 
-      grammarPath = path.join(dir, file)
-      # CSON.resolve uses fs.isFileSync we'll have to check it in the next step but only on valid files.
-      if CSON.isObjectPath(grammarPath)
-        @_registryLoadGrammar(grammarPath,(err)->
-          done(err)
-        )
+      while files.length
+        file = files.shift()
+        grammarPath = path.join(dir, file)
+        # CSON.resolve uses fs.isFileSync we'll have to check it in the next step but only on valid files.
+        if CSON.isObjectPath(grammarPath)
+          @_registryLoadGrammar(grammarPath,(err)->
+            done(err)
+          )
     )
 
   _registryLoadGrammar:(grammarPath,cb)->
-    fs.stat(grammarPath,(err,stat)->
+    fs.stat(grammarPath,(err,stat)=>
       if err
         return cb(err)
 
@@ -211,7 +224,11 @@ class Highlights
       return @_loadingGrammars.push(cb)
 
     @_loadingGrammars = [cb]
-    callbacks = (err)=>
+    callbacks = (err) =>
+      console.log('LOADGRAMMARS: finished loading. unrolling ',@_loadingGrammars)
+      if err
+        console.log(err+''+err.stack)
+
       cbs = @_loadingGrammars
       @_loadingGrammars = true
       while cbs.length
@@ -238,14 +255,15 @@ class Highlights
     )
 
   _populateGrammars: (grammarsFromJSON,grammarsArray,cb) ->
-    toLoad = grammarsArray.length
+    toLoad = (grammarsArray||[]).length
     grammars = []
 
     done = (err,grammar)=>
       if err
         return cb(err)
 
-      grammars.push(grammar)
+      if grammar
+        grammars.push(grammar)
 
       if !--toLoad
         # complete loading from grammars.json
@@ -256,6 +274,10 @@ class Highlights
 
         cb(false,true)
    
+    if(!toLoad)
+      toLoad = 1
+      return done()
+
     while grammarsArray.length
       @registry.loadGrammar(grammarsArray.shift(),done)
 
