@@ -34,7 +34,7 @@ class Highlights
   # tokens in the line.
   highlightSync: ({filePath, fileContents, scopeName}={}) ->
     @loadGrammarsSync()
-    
+
     fileContents ?= fs.readFileSync(filePath, 'utf8') if filePath
 
     @_highlightCommon({filePath, fileContents, scopeName})
@@ -54,12 +54,14 @@ class Highlights
   # per line and each line will contain one or more <span> elements for the
   # tokens in the line. All grammar loading and fs operations are async so you can use this module in a server or busy process.
   highlight: ({filePath, fileContents, scopeName}={},cb) ->
+
+
     @loadGrammars((err) =>
       if err
         return cb(err)
 
-      if filePath
-        fs.readFile(filePath, 'utf8', (err,fileContents)->
+      if filePath and !fileContents
+        fs.readFile(filePath, 'utf8', (err,fileContents)=>
           if err
             return cb(err)
 
@@ -100,18 +102,12 @@ class Highlights
   # cb(err) - The callback so you know when it's done
   #
   requireGrammars: ({modulePath}={},cb) ->
-    console.log('REQUIRE GRAMMARS: start')
     @loadGrammars((err)=>
-
-      console.log('REQURE GRAMMARS: load grammars error? ',err)
 
       if err
         return cb(err)
       
       fs.stat(modulePath,(err,stat)=>
-
-        console.log('REQUIRE GRAMMARS: stat')
-        console.log('fs.stats on modulePath!!!!!! -------->',stat)
 
         if err
           return cb(err)
@@ -126,7 +122,6 @@ class Highlights
 
 
         grammarsDir = path.resolve(packageDir, 'grammars')
-        console.log('grammarsDir  --------> ',grammarsDir)
         @_registryLoadGrammarsDir(grammarsDir,cb)
 
       )
@@ -170,6 +165,7 @@ class Highlights
     )
 
   _highlightCommon:({filePath, fileContents, scopeName}={}) ->
+
     grammar = @registry.grammarForScopeName(scopeName)
 
     if !grammar
@@ -225,9 +221,6 @@ class Highlights
 
     @_loadingGrammars = [cb]
     callbacks = (err) =>
-      console.log('LOADGRAMMARS: finished loading. unrolling ',@_loadingGrammars)
-      if err
-        console.log(err+''+err.stack)
 
       cbs = @_loadingGrammars
       @_loadingGrammars = true
