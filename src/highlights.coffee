@@ -137,7 +137,10 @@ class Highlights
     fs.readdir(dir, (err, files)=>
       if err
         return cb(err)
+
       todo = files.length
+      if !todo
+        return cb(false,[])
 
       while files.length
         file = files.shift()
