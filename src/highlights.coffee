@@ -128,16 +128,16 @@ class Highlights
 
     )
 
-  _registryLoadGrammarsDir:(dir,cb) ->
+  _registryLoadGrammarsDir: (dir,cb) ->
     cb = once(cb)
     todo = false
-    done = (err)->
+    done = (err) ->
       if err
         return cb(err)
       if !--todo
         cb()
 
-    fs.readdir(dir, (err, files)=>
+    fs.readdir(dir, (err, files) =>
       if err
         return cb(err)
 
@@ -150,13 +150,13 @@ class Highlights
         grammarPath = path.join(dir, file)
         # CSON.resolve uses fs.isFileSync we'll have to check it in the next step but only on valid files.
         if CSON.isObjectPath(grammarPath)
-          @_registryLoadGrammar(grammarPath,(err)->
+          @_registryLoadGrammar(grammarPath,(err) ->
             done(err)
           )
     )
 
-  _registryLoadGrammar:(grammarPath,cb)->
-    fs.stat(grammarPath,(err,stat)=>
+  _registryLoadGrammar: (grammarPath,cb) ->
+    fs.stat(grammarPath,(err,stat) =>
       if err
         return cb(err)
 
@@ -167,7 +167,7 @@ class Highlights
       @registry.loadGrammar(grammarPath,cb)
     )
 
-  _highlightCommon:({filePath, fileContents, scopeName}={}) ->
+  _highlightCommon: ({filePath, fileContents, scopeName}={}) ->
 
     grammar = @registry.grammarForScopeName(scopeName)
 
@@ -213,7 +213,7 @@ class Highlights
       @registry.addGrammar(grammar)
 
 
-  loadGrammars: (cb)->
+  loadGrammars: (cb) ->
 
     cb = once(cb)
 
@@ -230,22 +230,22 @@ class Highlights
       while cbs.length
         cbs.shift()(err)
 
-    c = 2
+    pendingAsyncCalls = 2
     grammarsFromJSON = null
     grammarsArray = null
 
     done = (err,paths) =>
       if err
         return callbacks(err)
-      if !--c
+      if !--pendingAsyncCalls
         @_populateGrammars(grammarsFromJSON,grammarsArray,callbacks)
 
-    @_findGrammars((err,arr)->
+    @_findGrammars((err,arr) ->
       grammarsArray = arr
       done(err)
     )
 
-    @_loadGrammarsJSON((err,fromJSON)->
+    @_loadGrammarsJSON((err,fromJSON) ->
       grammarsFromJSON = fromJSON
       done(err)
     )
@@ -277,16 +277,16 @@ class Highlights
     while grammarsArray.length
       @registry.loadGrammar(grammarsArray.shift(),done)
 
-  _findGrammars: (cb)->
+  _findGrammars: (cb) ->
 
     if typeof @includePath is 'string'
-      fs.stat(@includePath, (err, stat)=>
+      fs.stat(@includePath, (err, stat) =>
         if err
           return cb(err)
         if stat.isFile()
           cb(false,[@includePath])
         else if stat.isDirectory()
-          fs.list(@includePath,['cson','json'], (err,list)=>
+          fs.list(@includePath,['cson','json'], (err,list) ->
             cb(err,list||[])
           )
         else
@@ -294,10 +294,9 @@ class Highlights
       )
     else
       setImmediate(cb)
-  _loadGrammarsJSON: (cb)->
+  _loadGrammarsJSON: (cb) ->
     grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
-    fs.readFile(grammarsPath, (err,contents)->
-
+    fs.readFile(grammarsPath, (err,contents) ->
       try
         cb(false,JSON.parse(contents))
       catch err
