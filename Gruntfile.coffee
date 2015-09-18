@@ -12,10 +12,7 @@ module.exports = (grunt) ->
 
     coffeelint:
       options:
-        no_empty_param_list:
-          level: 'error'
-        max_line_length:
-          level: 'ignore'
+        configFile: 'coffeelint.json'
 
       gruntfile: ['Gruntfile.coffee']
       src: ['src/*.coffee']
