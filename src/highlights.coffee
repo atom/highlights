@@ -3,6 +3,9 @@ _ = require 'underscore-plus'
 fs = require 'fs-plus'
 CSON = require 'season'
 {GrammarRegistry} = require 'first-mate'
+Selector = require 'first-mate-select-grammar'
+selector = Selector()
+
 
 module.exports =
 class Highlights
@@ -70,12 +73,16 @@ class Highlights
 
     fileContents ?= fs.readFileSync(filePath, 'utf8') if filePath
     grammar = @registry.grammarForScopeName(scopeName)
-    grammar ?= @registry.selectGrammar(filePath, fileContents)
+
+    if !grammar
+      grammar = selector.selectGrammar(@registry,filePath,fileContents)
+
     lineTokens = grammar.tokenizeLines(fileContents)
 
     # Remove trailing newline
     if lineTokens.length > 0
       lastLineTokens = lineTokens[lineTokens.length - 1]
+
       if lastLineTokens.length is 1 and lastLineTokens[0].value is ''
         lineTokens.pop()
 
@@ -83,7 +90,7 @@ class Highlights
     for tokens in lineTokens
       scopeStack = []
       html += '<div class="line">'
-      for {scopes, value} in tokens
+      for {value, scopes} in tokens
         value = ' ' unless value
         html = @updateScopeStack(scopeStack, scopes, html)
         html += "<span>#{@escapeString(value)}</span>"
