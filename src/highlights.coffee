@@ -56,20 +56,15 @@ class Highlights
   highlight: ({filePath, fileContents, scopeName}={},cb) ->
 
 
-    @loadGrammars((err) =>
-      if err
-        return cb(err)
+    @loadGrammars (err) =>
+      return cb(err) if err
 
       if filePath and !fileContents
-        fs.readFile(filePath, 'utf8', (err,fileContents)=>
-          if err
-            return cb(err)
-
-          cb(false,@_highlightCommon({filePath,fileContents,scopeName}))
-        )
+        fs.readFile filePath, 'utf8', (err,fileContents) =>
+          return cb(err) if err
+          cb(false,@_highlightCommon({filePath, fileContents, scopeName}))
       else
-        cb(false,@_highlightCommon({filePath,fileContents,scopeName}))
-    )
+        cb(false,@_highlightCommon({filePath, fileContents, scopeName}))
 
   # Public: Require all the grammars from the grammars folder at the root of an
   #   npm module.
@@ -93,6 +88,8 @@ class Highlights
       if grammarPath = CSON.resolve(path.join(grammarsDir, file))
         @registry.loadGrammarSync(grammarPath)
 
+    return
+
   # Public: Require all the grammars from the grammars folder at the root of an
   #   npm module asyncronously.
   #
@@ -102,15 +99,11 @@ class Highlights
   # cb(err) - The callback so you know when it's done
   #
   requireGrammars: ({modulePath}={},cb) ->
-    @loadGrammars((err)=>
+    @loadGrammars (err) =>
+      return cb(err) if err
 
-      if err
-        return cb(err)
-      
-      fs.stat(modulePath,(err,stat)=>
-
-        if err
-          return cb(err)
+      fs.stat modulePath, (err, stat) =>
+        return cb(err) if err
 
         if stat.isFile()
           packageDir = path.dirname(modulePath)
@@ -120,59 +113,43 @@ class Highlights
           # return with no error at all if i cant find the module dir.
           return cb()
 
-
         grammarsDir = path.resolve(packageDir, 'grammars')
         @_registryLoadGrammarsDir(grammarsDir,cb)
-
-      )
-
-    )
 
   _registryLoadGrammarsDir: (dir,cb) ->
     cb = once(cb)
     todo = false
     done = (err) ->
-      if err
-        return cb(err)
-      if !--todo
-        cb()
+      return cb(err) if err
+      cb() unless --todo
 
-    fs.readdir(dir, (err, files) =>
+    fs.readdir dir, (err, files) =>
       if err
         return cb(err)
 
       todo = files.length
-      if !todo
-        return cb(false,[])
+      return cb(false,[]) unless todo
 
       while files.length
         file = files.shift()
         grammarPath = path.join(dir, file)
         # CSON.resolve uses fs.isFileSync we'll have to check it in the next step but only on valid files.
         if CSON.isObjectPath(grammarPath)
-          @_registryLoadGrammar(grammarPath,(err) ->
-            done(err)
-          )
-    )
+          @_registryLoadGrammar grammarPath, (err) -> done(err)
 
   _registryLoadGrammar: (grammarPath,cb) ->
-    fs.stat(grammarPath,(err,stat) =>
-      if err
-        return cb(err)
+    fs.stat grammarPath,(err,stat) =>
+      return cb(err) if err
 
       # does not error out at this stage if the file is named like a grammar but is not a file.
-      if !stat.isFile()
-        return cb()
+      return cb() if !stat.isFile()
 
       @registry.loadGrammar(grammarPath,cb)
-    )
 
   _highlightCommon: ({filePath, fileContents, scopeName}={}) ->
 
     grammar = @registry.grammarForScopeName(scopeName)
-
-    if !grammar
-      grammar = selector.selectGrammar(@registry,filePath,fileContents)
+    grammar ?= selector.selectGrammar(@registry, filePath, fileContents)
 
     lineTokens = grammar.tokenizeLines(fileContents)
 
@@ -212,9 +189,9 @@ class Highlights
       grammar = @registry.createGrammar(grammarPath, grammar)
       @registry.addGrammar(grammar)
 
+    return
 
   loadGrammars: (cb) ->
-
     cb = once(cb)
 
     if @_loadingGrammars == true or @registry.grammars.length > 1
@@ -235,31 +212,26 @@ class Highlights
     grammarsArray = null
 
     done = (err,paths) =>
-      if err
-        return callbacks(err)
+      return callbacks(err) if err
       if !--pendingAsyncCalls
-        @_populateGrammars(grammarsFromJSON,grammarsArray,callbacks)
+        @_populateGrammars(grammarsFromJSON, grammarsArray, callbacks)
 
-    @_findGrammars((err,arr) ->
+    @_findGrammars (err,arr) ->
       grammarsArray = arr
       done(err)
-    )
 
-    @_loadGrammarsJSON((err,fromJSON) ->
+    @_loadGrammarsJSON (err,fromJSON) ->
       grammarsFromJSON = fromJSON
       done(err)
-    )
 
   _populateGrammars: (grammarsFromJSON,grammarsArray,cb) ->
     toLoad = (grammarsArray||[]).length
     grammars = []
 
-    done = (err,grammar)=>
-      if err
-        return cb(err)
+    done = (err,grammar) =>
+      return cb(err) if err
 
-      if grammar
-        grammars.push(grammar)
+      grammars.push(grammar) if grammar
 
       if !--toLoad
         # complete loading from grammars.json
@@ -269,8 +241,8 @@ class Highlights
           @registry.addGrammar(grammar)
 
         cb(false,true)
-   
-    if(!toLoad)
+
+    if !toLoad
       toLoad = 1
       return done()
 
@@ -278,31 +250,25 @@ class Highlights
       @registry.loadGrammar(grammarsArray.shift(),done)
 
   _findGrammars: (cb) ->
-
     if typeof @includePath is 'string'
-      fs.stat(@includePath, (err, stat) =>
-        if err
-          return cb(err)
+      fs.stat @includePath, (err, stat) =>
+        return cb(err) if err
         if stat.isFile()
           cb(false,[@includePath])
         else if stat.isDirectory()
-          fs.list(@includePath,['cson','json'], (err,list) ->
-            cb(err,list||[])
-          )
+          fs.list @includePath,['cson','json'], (err,list=[]) -> cb(err,list)
         else
           cb(new Error('unsupported file type.'))
-      )
     else
       setImmediate(cb)
+
   _loadGrammarsJSON: (cb) ->
     grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
-    fs.readFile(grammarsPath, (err,contents) ->
+    fs.readFile grammarsPath, (err,contents) ->
       try
-        cb(false,JSON.parse(contents))
+        cb(false, JSON.parse(contents))
       catch err
         return cb(err)
-    )
-
 
   escapeString: (string) ->
     string.replace /[&"'<> ]/g, (match) ->
