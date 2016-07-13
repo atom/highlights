@@ -53,18 +53,18 @@ class Highlights
   # Calls back with a string of HTML. The HTML will contains one <pre> with one <div>
   # per line and each line will contain one or more <span> elements for the
   # tokens in the line. All grammar loading and fs operations are async so you can use this module in a server or busy process.
-  highlight: ({filePath, fileContents, scopeName}={},cb) ->
+  highlight: ({filePath, fileContents, scopeName}={}, cb) ->
 
 
     @loadGrammars (err) =>
       return cb(err) if err
 
-      if filePath and !fileContents
-        fs.readFile filePath, 'utf8', (err,fileContents) =>
+      if filePath and not fileContents
+        fs.readFile filePath, 'utf8', (err, fileContents) =>
           return cb(err) if err
-          cb(false,@_highlightCommon({filePath, fileContents, scopeName}))
+          cb(false, @_highlightCommon({filePath, fileContents, scopeName}))
       else
-        cb(false,@_highlightCommon({filePath, fileContents, scopeName}))
+        cb(false, @_highlightCommon({filePath, fileContents, scopeName}))
 
   # Public: Require all the grammars from the grammars folder at the root of an
   #   npm module.
@@ -98,7 +98,7 @@ class Highlights
   #              directory will be used.
   # cb(err) - The callback so you know when it's done
   #
-  requireGrammars: ({modulePath}={},cb) ->
+  requireGrammars: ({modulePath}={}, cb) ->
     @loadGrammars (err) =>
       return cb(err) if err
 
@@ -114,9 +114,9 @@ class Highlights
           return cb()
 
         grammarsDir = path.resolve(packageDir, 'grammars')
-        @_registryLoadGrammarsDir(grammarsDir,cb)
+        @_registryLoadGrammarsDir(grammarsDir, cb)
 
-  _registryLoadGrammarsDir: (dir,cb) ->
+  _registryLoadGrammarsDir: (dir, cb) ->
     cb = once(cb)
     todo = false
     done = (err) ->
@@ -128,7 +128,7 @@ class Highlights
         return cb(err)
 
       todo = files.length
-      return cb(false,[]) unless todo
+      return cb(false, []) unless todo
 
       while files.length
         file = files.shift()
@@ -137,14 +137,14 @@ class Highlights
         if CSON.isObjectPath(grammarPath)
           @_registryLoadGrammar grammarPath, (err) -> done(err)
 
-  _registryLoadGrammar: (grammarPath,cb) ->
-    fs.stat grammarPath,(err,stat) =>
+  _registryLoadGrammar: (grammarPath, cb) ->
+    fs.stat grammarPath, (err, stat) =>
       return cb(err) if err
 
       # does not error out at this stage if the file is named like a grammar but is not a file.
-      return cb() if !stat.isFile()
+      return cb() if not stat.isFile()
 
-      @registry.loadGrammar(grammarPath,cb)
+      @registry.loadGrammar(grammarPath, cb)
 
   _highlightCommon: ({filePath, fileContents, scopeName}={}) ->
 
@@ -194,7 +194,7 @@ class Highlights
   loadGrammars: (cb) ->
     cb = once(cb)
 
-    if @_loadingGrammars == true or @registry.grammars.length > 1
+    if @_loadingGrammars is true or @registry.grammars.length > 1
       return setImmediate(cb)
     else if Array.isArray(@_loadingGrammars)
       return @_loadingGrammars.push(cb)
@@ -211,52 +211,52 @@ class Highlights
     grammarsFromJSON = null
     grammarsArray = null
 
-    done = (err,paths) =>
+    done = (err, paths) =>
       return callbacks(err) if err
-      if !--pendingAsyncCalls
+      if not --pendingAsyncCalls
         @_populateGrammars(grammarsFromJSON, grammarsArray, callbacks)
 
-    @_findGrammars (err,arr) ->
+    @_findGrammars (err, arr) ->
       grammarsArray = arr
       done(err)
 
-    @_loadGrammarsJSON (err,fromJSON) ->
+    @_loadGrammarsJSON (err, fromJSON) ->
       grammarsFromJSON = fromJSON
       done(err)
 
-  _populateGrammars: (grammarsFromJSON,grammarsArray,cb) ->
-    toLoad = (grammarsArray||[]).length
+  _populateGrammars: (grammarsFromJSON, grammarsArray, cb) ->
+    toLoad = (grammarsArray or []).length
     grammars = []
 
-    done = (err,grammar) =>
+    done = (err, grammar) =>
       return cb(err) if err
 
       grammars.push(grammar) if grammar
 
-      if !--toLoad
+      if not --toLoad
         # complete loading from grammars.json
         for grammarPath, grammar of grammarsFromJSON
           continue if @registry.grammarForScopeName(grammar.scopeName)?
           grammar = @registry.createGrammar(grammarPath, grammar)
           @registry.addGrammar(grammar)
 
-        cb(false,true)
+        cb(false, true)
 
-    if !toLoad
+    if not toLoad
       toLoad = 1
       return done()
 
     while grammarsArray.length
-      @registry.loadGrammar(grammarsArray.shift(),done)
+      @registry.loadGrammar(grammarsArray.shift(), done)
 
   _findGrammars: (cb) ->
     if typeof @includePath is 'string'
       fs.stat @includePath, (err, stat) =>
         return cb(err) if err
         if stat.isFile()
-          cb(false,[@includePath])
+          cb(false, [@includePath])
         else if stat.isDirectory()
-          fs.list @includePath,['cson','json'], (err,list=[]) -> cb(err,list)
+          fs.list @includePath, ['cson', 'json'], (err, list=[]) -> cb(err, list)
         else
           cb(new Error('unsupported file type.'))
     else
@@ -264,7 +264,7 @@ class Highlights
 
   _loadGrammarsJSON: (cb) ->
     grammarsPath = path.join(__dirname, '..', 'gen', 'grammars.json')
-    fs.readFile grammarsPath, (err,contents) ->
+    fs.readFile grammarsPath, (err, contents) ->
       try
         cb(false, JSON.parse(contents))
       catch err
