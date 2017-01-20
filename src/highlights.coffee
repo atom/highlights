@@ -299,7 +299,10 @@ class Highlights
 
   pushScope: (scopeStack, scope, html) ->
     scopeStack.push(scope)
-    html += "<span class=\"#{scope.replace(/\.+/g, ' ')}\">"
+    if scope
+      html += "<span class=\"syntax--#{scope.replace(/\.+/g, ' syntax--')}\">"
+    else
+      html += "<span>"
 
   popScope: (scopeStack, html) ->
     scopeStack.pop()
