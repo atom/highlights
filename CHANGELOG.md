@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/atom/highlights/compare/v1.4.1...v2.0.1) (2017-01-20)
+
+
+### Bug Fixes
+
+* remove iojs and 0.10 as they are no longer supported ([#48](https://github.com/atom/highlights/issues/48)) ([e6ed916](https://github.com/atom/highlights/commit/e6ed916))
+
+
+
 <a name="1.4.1"></a>
 # [1.4.1](https://github.com/atom/highlights/compare/v1.4.0...v1.4.1) (2016-08-12)
 
