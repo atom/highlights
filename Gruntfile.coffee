@@ -36,6 +36,6 @@ module.exports = (grunt) ->
     grunt.file.delete('gen') if grunt.file.exists('gen')
 
   grunt.registerTask('lint', ['coffeelint'])
-  grunt.registerTask('default', ['coffeelint', 'coffee'])
+  grunt.registerTask('default', ['coffeelint', 'coffee', 'build-grammars'])
   grunt.registerTask('test', ['default', 'lint', 'shell:test'])
   grunt.registerTask('prepublish', ['clean', 'build-grammars', 'test'])
