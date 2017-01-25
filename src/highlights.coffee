@@ -16,9 +16,10 @@ class Highlights
   #   :includePath - An optional String path to a file or folder of grammars to
   #                  register.
   #   :registry    - An optional GrammarRegistry instance.
-  constructor: ({@includePath, @registry}={}) ->
+  constructor: ({@includePath, @registry, @scopePrefix}={}) ->
     @registry ?= new GrammarRegistry(maxTokensPerLine: Infinity)
     @_loadingGrammars = false
+    @scopePrefix ?= ''
 
   # Public: Syntax highlight the given file synchronously.
   #
@@ -300,7 +301,8 @@ class Highlights
   pushScope: (scopeStack, scope, html) ->
     scopeStack.push(scope)
     if scope
-      html += "<span class=\"syntax--#{scope.replace(/\.+/g, ' syntax--')}\">"
+      className = @scopePrefix + scope.replace(/\.+/g, " #{@scopePrefix}")
+      html += "<span class=\"#{className}\">"
     else
       html += "<span>"
 
