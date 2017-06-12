@@ -85,3 +85,6 @@
 [submodule "deps/language-clojure"]
 	path = deps/language-clojure
 	url = https://github.com/atom/language-clojure
+[submodule "deps/language-react"]
+	path = deps/language-react
+	url = https://github.com/orktes/atom-react.git
