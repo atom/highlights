@@ -88,3 +88,6 @@
 [submodule "deps/language-react"]
 	path = deps/language-react
 	url = https://github.com/orktes/atom-react.git
+[submodule "deps/language-typescript"]
+	path = deps/language-typescript
+	url = https://github.com/atom/language-typescript
