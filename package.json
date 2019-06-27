@@ -21,7 +21,7 @@
   "homepage": "https://github.com/atom/highlights",
   "dependencies": {
     "first-mate": "^7.0.2",
-    "first-mate-select-grammar": "https://github.com/atom/first-mate-select-grammar#b7d54921d849e6108f968581bf31e41929fd992f",
+    "first-mate-select-grammar": "^1.0.1",
     "fs-plus": "^3.0.0",
     "once": "^1.3.2",
     "season": "^6.0.2",
