@@ -1,6 +1,6 @@
 {
   "name": "highlights",
-  "version": "3.1.2",
+  "version": "3.1.4",
   "description": "Syntax highlighter",
   "main": "lib/highlights.js",
   "scripts": {
