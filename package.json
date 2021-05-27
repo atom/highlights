@@ -29,6 +29,7 @@
     "yargs": "^4.7.1"
   },
   "devDependencies": {
+    "coffeescript": "^2.5.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-coffeelint": "0.0.16",
