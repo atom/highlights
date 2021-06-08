@@ -5,7 +5,7 @@ notifications:
     on_success: never
     on_failure: change
 
-node_js: 6
+node_js: 12.14.1
 
 before_install:
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
