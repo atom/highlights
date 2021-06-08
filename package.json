@@ -26,9 +26,10 @@
     "once": "^1.3.2",
     "season": "^6.0.2",
     "underscore-plus": "^1.5.1",
-    "yargs": "^4.7.1"
+    "yargs": "^17.0.1"
   },
   "devDependencies": {
+    "coffeescript": "^2.5.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-coffeelint": "0.0.16",
