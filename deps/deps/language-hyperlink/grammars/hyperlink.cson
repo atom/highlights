@@ -1,0 +1,14 @@
+'name': 'Hyperlink'
+'scopeName': 'text.hyperlink'
+'fileTypes': []
+'injectionSelector': 'text, string, comment, source.gfm'
+'patterns': [
+  {
+    'match': '(?x)( (https?|s?ftp|ftps|file|smb|afp|nfs|(x-)?man(-page)?|gopher|txmt|issue)://|mailto:)[-:@[:word:].,~%+/?=&#;|]+(?<![-.,?:#;])'
+    'name': 'markup.underline.link.$2.hyperlink'
+  }
+  {
+    'match': '(?i)\\bRFC(?: |(?<= RFC))(\\d+)\\b'
+    'name': 'markup.underline.link.rfc.$1.hyperlink'
+  }
+]

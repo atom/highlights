@@ -1,0 +1,182 @@
+{
+".source.js":
+  "React: componentDidMount: fn() { ... }":
+    prefix: "cdm"
+    body: "componentDidMount: function() {\n\t${1}\n},"
+
+  "React: componentDidUpdate: fn(pp, ps) { ... }":
+    prefix: "cdup"
+    body: "componentDidUpdate: function(prevProps, prevState) {\n\t${1}\n},"
+
+  "React: componentWillMount: fn() { ... }":
+    prefix: "cwm"
+    body: "componentWillMount: function() {\n\t${1}\n},"
+
+  "React: componentWillReceiveProps: fn(np) { ... }":
+    prefix: "cwr"
+    body: "componentWillReceiveProps: function(nextProps) {\n\t${1}\n},"
+
+  "React: componentWillUnmount: fn() { ... }":
+    prefix: "cwun"
+    body: "componentWillUnmount: function() {\n\t${1}\n},"
+
+  "React: componentWillUpdate: fn(np, ns) { ... }":
+    prefix: "cwu"
+    body: "componentWillUpdate: function(nextProps, nextState) {\n\t${1}\n},"
+
+  "React: cx({ ... })":
+    prefix: "cx"
+    body: "cx({\n\t$1: $2\n});"
+
+  "React: forceUpdate(...)":
+    prefix: "fup"
+    body: "forceUpdate(${1:callback});"
+
+  "React: getDefaultProps: fn() { return {...} } ":
+    prefix: "gdp"
+    body: "getDefaultProps: function() {\n\treturn {\n\t\t${1}\n\t};\n},"
+
+  "React: getInitialState: fn() { return {...} } ":
+    prefix: "gis"
+    body: "getInitialState: function() {\n\treturn {\n\t\t${1}: ${2}\n\t};\n},"
+
+  "React: isMounted()":
+    prefix: "ism"
+    body: "isMounted()"
+
+  "React: propTypes { ... }":
+    prefix: "pt"
+    body: "propTypes: {\n\t${1}: React.PropTypes.${2:string}\n},"
+
+  "React: component skeleton":
+    prefix: "rcc"
+    body: "var React = require('react');\nvar PropTypes = React.PropTypes;\n\nvar ${1} = React.createClass({\n\n\trender: function() {\n\t\treturn (\n\t\t\t${0:<div />}\n\t\t);\n\t}\n\n});\n\nmodule.exports = ${1};"
+
+  "React: render: fn() { return ... }":
+    prefix: "ren"
+    body: "render: function() {\n\treturn (\n\t\t${1:<div />}\n\t);\n}"
+
+  "React: setState({ ... })":
+    prefix: "sst"
+    body: "setState({\n\t${1}: ${2}\n});"
+
+  "React: shouldComponentUpdate: fn(np, ns) { ... }":
+    prefix: "scu"
+    body: "shouldComponentUpdate: function(nextProps, nextState) {\n\t${1}\n},"
+
+  "React: this.props.":
+    prefix: "props"
+    body: "this.props.${1}"
+
+  "React: this.state.":
+    prefix: "state"
+    body: "this.state.${1}"
+
+  "React: render(component, container, [callback])":
+    prefix: "rrc"
+    body: "ReactDOM.render(${1:<$2 />}, ${3:document.body}${4:, ${5:callback}});"
+  # React >0.13 (ES6)
+  "React: componentDidMount() { ... } (ES6)":
+    prefix: "cdm6"
+    body: "componentDidMount() {\n\t${1}\n}"
+
+  "React: componentDidUpdate(pp, ps) { ... } (ES6)":
+    prefix: "cdup6"
+    body: "componentDidUpdate(prevProps, prevState) {\n\t${1}\n}"
+
+  "React: componentWillMount() { ... } (ES6)":
+    prefix: "cwm6"
+    body: "componentWillMount() {\n\t${1}\n}"
+
+  "React: componentWillReceiveProps(np) { ... } (ES6)":
+    prefix: "cwr6"
+    body: "componentWillReceiveProps(nextProps) {\n\t${1}\n}"
+
+  "React: componentWillUnmount() { ... } (ES6)":
+    prefix: "cwun6"
+    body: "componentWillUnmount() {\n\t${1}\n}"
+
+  "React: componentWillUpdate(np, ns) { ... } (ES6)":
+    prefix: "cwu6"
+    body: "componentWillUpdate(nextProps, nextState) {\n\t${1}\n}"
+
+  "React: static defaultProps = { ... }":
+    prefix: "dp"
+    body: "static defaultProps = {\n\t${1}\n};"
+
+  "React: this.state = { ... }":
+    prefix: "is"
+    body: "this.state = {\n\t${1}: ${2}\n}"
+
+  "React: static propTypes = { ... } (ES6)":
+    prefix: "pt6"
+    body: "static propTypes = {\n\t${1}: React.PropTypes.${2:string}\n};"
+
+  "React: class skeleton":
+    prefix: "rcd"
+    body: "import React, { PropTypes } from 'react'\n\nclass $1 extends React.Component {\n\trender () {\n\t\n\t}\n}\n\nexport default ${1};"
+
+  "React: component skeleton (ES6)":
+    prefix: "rcc6"
+    body: "import React, { PropTypes } from \'react\'\n\nconst $1 = React.createClass({\n\trender () {\n\t\treturn (\n\t\n\t\t)\n\t}\n})\n\nexport default ${1}\n"
+
+  "React: stateless component (ES6)":
+    prefix: "rcs"
+    body: "import React, { PropTypes } from \'react\'\n\nconst $1 = (${2:props}) => {\n\treturn (\n\t\t${3:<div />}\n\t)\n}\n\nexport default ${1}\n"
+
+  "React: render() { return ... } (ES6)":
+    prefix: "ren6"
+    body: "render() {\n\treturn (\n\t\t${1:<div />}\n\t);\n}"
+
+  "React: setState({ ... }) (ES6)":
+    prefix: "sst6"
+    body: "this.setState({\n\t${1}: ${2}\n});"
+
+  "React: shouldComponentUpdate(np, ns) { ... } (ES6)":
+    prefix: "scu6"
+    body: "shouldComponentUpdate(nextProps, nextState) {\n\t${1}\n}"
+
+  "React: const { props: { ... } } = this (ES6)":
+    prefix: "props6"
+    body: "const { props: { ${1} } } = this"
+
+  "PropTypes.func.isRequired":
+    prefix: "ptf"
+    body: "PropTypes.func.isRequired"
+
+  "PropTypes.string.isRequired":
+    prefix: "pts"
+    body: "PropTypes.string.isRequired"
+
+  "PropTypes.object.isRequired":
+    prefix: "pto"
+    body: "PropTypes.object.isRequired"
+
+  "PropTypes.array.isRequired":
+    prefix: "pta"
+    body: "PropTypes.array.isRequired"
+
+  "PropTypes.bool.isRequired":
+    prefix: "ptb"
+    body: "PropTypes.bool.isRequired"
+
+  "PropTypes.number.isRequired":
+    prefix: "ptn"
+    body: "PropTypes.number.isRequired"
+
+  "PropTypes.node.isRequired":
+    prefix: "ptnode"
+    body: "PropTypes.node.isRequired"
+
+  "PropTypes.element.isRequired":
+    prefix: "pte"
+    body: "PropTypes.element.isRequired"
+
+  "PropTypes.any.isRequired":
+    prefix: "ptany"
+    body: "PropTypes.any.isRequired"
+
+  "PropTypes.shape({...}).isRequired":
+    prefix: "ptshape"
+    body: "PropTypes.shape({ $1: $2 }).isRequired"
+}

@@ -1,0 +1,31 @@
+'menu': [
+  {
+    'label': 'Edit'
+    'submenu': [
+      {
+        'label': 'React (JSX)'
+        'submenu': [
+          {
+            'label': 'Reformat JSX'
+            'command': 'react:reformat-JSX'
+          }
+          {
+            'label': 'HTML to JSX'
+            'command': 'react:HTML-to-JSX'
+          }
+        ]
+      }
+    ]
+  }
+]
+'context-menu':
+  'atom-text-editor': [
+    {
+      label: 'Reformat JSX'
+      command: 'react:reformat-JSX'
+    }
+    {
+      label: 'Convert HTML to JSX'
+      command: 'react:HTML-to-JSX'
+    }
+  ]

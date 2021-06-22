@@ -1,0 +1,72 @@
+'.source.sass, .source.css.scss':
+  '!important':
+    'prefix': '!'
+    'body': '!important${1:;}$0'
+  'background-color: hex':
+    'prefix': 'background'
+    'body': 'background-color: #${1:DDD};$0'
+  'clear: value':
+    'prefix': 'clear'
+    'body': 'clear: ${1:both};$0'
+  'color: hex':
+    'prefix': 'color'
+    'body': 'color: ${1:#${2:DDD}}$0'
+  'cursor: type':
+    'prefix': 'cursor'
+    'body': 'cursor: ${1:pointer};$0'
+  'display: block':
+    'prefix': 'display'
+    'body': 'display: ${1:block};$0'
+  'float: left/right/none':
+    'prefix': 'float'
+    'body': 'float: ${1:left};$0'
+  'font-family: family':
+    'prefix': 'font'
+    'body': 'font-family: ${1:Arial, "MS Trebuchet"}, ${2:sans-}serif;$0'
+  'margin: T R B L':
+    'prefix': 'margin'
+    'body': 'margin: ${1:10px} ${2:0px} ${3:20px} ${4:0px};$0'
+  'overflow: type':
+    'prefix': 'overflow'
+    'body': 'overflow: ${1:hidden};$0'
+  'padding: T R B L':
+    'prefix': 'padding'
+    'body': 'padding: ${1:10px} ${2:0px} ${3:20px} ${4:0px};$0'
+  'vertical-align: type':
+    'prefix': 'vertical'
+    'body': 'vertical-align: ${1:middle};$0'
+  'visibility: type':
+    'prefix': 'visibility'
+    'body': 'visibility: ${1:hidden};$0'
+  'white-space: normal/pre/nowrap':
+    'prefix': 'white'
+    'body': 'white-space: ${1:nowrap};$0'
+  'z-index: index':
+    'prefix': 'z'
+    'body': 'z-index: ${1:1};$0'
+'.source.sass':
+  '@Include':
+    'prefix': 'include'
+    'body': '@include ${0}'
+  '@extend':
+    'prefix': 'extend'
+    'body': '@extend $0'
+  '@if':
+    'prefix': 'if'
+    'body': '@if ${1:conditions}\n\t$0'
+  '@import':
+    'prefix': 'import'
+    'body': '@import "$0"'
+'.source.css.scss':
+  '@Include':
+    'prefix': 'include'
+    'body': '@include ${0};'
+  '@extend':
+    'prefix': 'extend'
+    'body': '@extend $0;'
+  '@if':
+    'prefix': 'if'
+    'body': '@if ${1:conditions} {\n\t$0\n}'
+  '@import':
+    'prefix': 'import'
+    'body': '@import "$1";$0'

@@ -1,0 +1,169 @@
+'name': 'CoffeeScript (JSX)'
+'scopeName': 'source.coffee.jsx'
+'comment': 'Coffee-React Syntax'
+'fileTypes': [
+  'cjsx'
+]
+'patterns': [
+  {
+    'include': '#cjsx'
+  }
+  {
+    'include': 'source.coffee'
+  }
+]
+'repository':
+  'interpolated-coffee':
+    'patterns': [
+      {
+        'begin': '\\#\\{'
+        'captures':
+          '0':
+            'name': 'punctuation.section.embedded.coffee'
+        'end': '\\}'
+        'name': 'source.coffee.embedded.source'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
+  'entities':
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'punctuation.definition.entity.html'
+          '3':
+            'name': 'punctuation.definition.entity.html'
+        'match': '(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)'
+        'name': 'constant.character.entity.html'
+      }
+      {
+        'match': '&'
+        'name': 'invalid.illegal.bad-ampersand.html'
+      }
+    ]
+  'string-double-quoted':
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.html'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.html'
+    'name': 'string.quoted.double.html'
+    'patterns': [
+      {
+        'include': '#interpolated-coffee'
+      }
+      {
+        'include': '#entities'
+      }
+    ]
+  'string-single-quoted':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.html'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.html'
+    'name': 'string.quoted.single.html'
+    'patterns': [
+      {
+        'include': '#entities'
+      }
+    ]
+  'tag-generic-attribute':
+    'match': '(?<=[^=])\\b([a-zA-Z0-9:-]+)'
+    'name': 'entity.other.attribute-name.html'
+  'embedded-coffee':
+    'begin': '\\{'
+    'beginCaptures':
+      '0':
+        'name': 'meta.brace.curly.coffee'
+    'end': '\\}'
+    'endCaptures':
+      '0':
+        'name': 'meta.brace.curly.coffee'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'cjsx':
+    'patterns': [
+      {
+        'begin': '(<)([a-zA-Z0-9.:-]+)([^>/]*)(>)'
+        'beginCaptures':
+          '0':
+            'name': 'meta.tag.other.html'
+          '1':
+            'name': 'punctuation.definition.tag.begin.html'
+          '2':
+            'name': 'entity.name.tag.other.html'
+          '3':
+            'patterns': [
+              {
+                'include': '#tag-stuff'
+              }
+            ]
+          '4':
+            'name': 'punctuation.definition.tag.end.html'
+        'end': '(<)(/\\2)(>)'
+        'endCaptures':
+          '0':
+            'name': 'meta.tag.other.html'
+          '1':
+            'name': 'punctuation.definition.tag.begin.html'
+          '2':
+            'name': 'entity.name.tag.other.html'
+          '3':
+            'name': 'punctuation.definition.tag.end.html'
+        'patterns': [
+          {
+            'include': '#embedded-coffee'
+          }
+          {
+            'include': '#cjsx'
+          }
+        ]
+      }
+      {
+        'begin': '(</?)([a-zA-Z0-9.:-]+)'
+        'beginCaptures':
+          '1':
+            'name': 'punctuation.definition.tag.begin.html'
+          '2':
+            'name': 'entity.name.tag.inline.other.html'
+        'end': '((?: ?/)?>)'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.tag.end.html'
+        'name': 'meta.tag.inline.other.html'
+        'patterns': [
+          {
+            'include': '#tag-stuff'
+          }
+        ]
+      }
+    ]
+  'tag-stuff':
+    'patterns': [
+      {
+        'include': '#tag-generic-attribute'
+      }
+      {
+        'include': '#string-double-quoted'
+      }
+      {
+        'include': '#string-single-quoted'
+      }
+      {
+        'include': '#embedded-coffee'
+      }
+    ]

@@ -1,0 +1,18 @@
+{
+  "name": "language-property-list",
+  "version": "0.8.0",
+  "description": "Property List support in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "homepage": "http://atom.github.io/language-property-list",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/language-property-list.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atom/language-property-list/issues"
+  }
+}

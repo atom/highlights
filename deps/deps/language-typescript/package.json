@@ -1,0 +1,19 @@
+{
+  "name": "language-typescript",
+  "version": "0.2.2",
+  "description": "TypeScript language support in Atom",
+  "engines": {
+    "atom": ">=1.19.1",
+    "node": "*"
+  },
+  "homepage": "https://atom.io/packages/language-typescript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/language-typescript.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atom/language-typescript/issues"
+  },
+  "devDependencies": {}
+}

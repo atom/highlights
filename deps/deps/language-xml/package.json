@@ -1,0 +1,18 @@
+{
+  "name": "language-xml",
+  "version": "0.27.0",
+  "description": "XML language support in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "homepage": "http://atom.github.io/language-xml",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/language-xml.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atom/language-xml/issues"
+  }
+}

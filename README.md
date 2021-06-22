@@ -2,7 +2,7 @@
 
 Reads in code, writes out HTML with CSS classes based on the tokens in the code.
 
-[![Build Status](https://travis-ci.org/atom/highlights.svg?branch=master)](https://travis-ci.org/atom/highlights)
+[![CI](https://github.com/atom/highlights/actions/workflows/ci.yml/badge.svg)](https://github.com/atom/highlights/actions/workflows/ci.yml)
 
 See it in action [here](https://atom.github.io/highlights/examples).
 

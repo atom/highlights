@@ -1,0 +1,18 @@
+{
+  "name": "language-hyperlink",
+  "version": "0.12.2",
+  "description": "Hyperlink colorization in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "homepage": "http://atom.github.io/language-hyperlink",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/language-hyperlink.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atom/language-hyperlink/issues"
+  }
+}

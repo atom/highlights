@@ -1,0 +1,69 @@
+'.source.ruby, .source.coffee':
+  'todo':
+    'prefix': 'todo'
+    'body': '# TODO: $0'
+  'fixme':
+    'prefix': 'fix'
+    'body': '# FIXME: $0'
+  'xxx':
+    'prefix': 'xxx'
+    'body': '# XXX: $0'
+  'idea':
+    'prefix': 'idea'
+    'body': '# IDEA: $0'
+
+'.text.haml':
+  'todo':
+    'prefix': 'todo'
+    'body': '-# TODO: $0'
+  'fixme':
+    'prefix': 'fix'
+    'body': '-# FIXME: $0'
+  'xxx':
+    'prefix': 'xxx'
+    'body': '-# XXX: $0'
+  'idea':
+    'prefix': 'idea'
+    'body': '-# IDEA: $0'
+
+'.text.html.ruby, .text.erb':
+  'todo':
+    'prefix': 'todo'
+    'body': '<%# TODO: $0 %>'
+  'fixme':
+    'prefix': 'fix'
+    'body': '<%# FIXME: $0 %>'
+  'xxx':
+    'prefix': 'xxx'
+    'body': '<%# XXX: $0 %>'
+  'idea':
+    'prefix': 'idea'
+    'body': '<%# IDEA: $0 %>'
+
+'.source.scss, .source.sass, .source.css.scss, .source.css.sass, .source.css.less, .source.js':
+  'todo':
+    'prefix': 'todo'
+    'body': '// TODO: $0'
+  'fixme':
+    'prefix': 'fix'
+    'body': '// FIXME: $0'
+  'xxx':
+    'prefix': 'xxx'
+    'body': '// XXX: $0'
+  'idea':
+    'prefix': 'idea'
+    'body': '// IDEA: $0'
+
+'.source.css':
+  'todo':
+    'prefix': 'todo'
+    'body': '/* TODO: $0 */'
+  'fixme':
+    'prefix': 'fix'
+    'body': '/* FIXME: $0 */'
+  'xxx':
+    'prefix': 'xxx'
+    'body': '/* XXX: $0 */'
+  'idea':
+    'prefix': 'idea'
+    'body': '/* IDEA: $0 */'
