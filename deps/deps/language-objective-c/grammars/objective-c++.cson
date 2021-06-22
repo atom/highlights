@@ -1,0 +1,21 @@
+'scopeName': 'source.objcpp'
+'fileTypes': [
+  'mm'
+  'M'
+  'h'
+]
+'name': 'Objective-C++'
+'patterns': [
+
+  # TODO - remove once the rename from 'c++' to 'cpp' has been released
+  {
+    'include': 'source.c++'
+  }
+
+  {
+    'include': 'source.cpp'
+  }
+  {
+    'include': 'source.objc'
+  }
+]

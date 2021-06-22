@@ -1,0 +1,325 @@
+'name': 'LESS'
+'scopeName': 'source.css.less'
+'fileTypes': [
+  'less'
+  'less.erb'
+]
+'foldingStartMarker': '/\\*\\*(?!\\*)|\\{\\s*($|/\\*(?!.*?\\*/.*\\S))'
+'foldingStopMarker': '(?<!\\*)\\*\\*/|^\\s*\\}'
+'patterns': [
+  {
+    'begin': '"'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.css'
+    'end': '"'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.css'
+    'name': 'string.quoted.double.css'
+    'patterns': [
+      {
+        'match': '\\\\(\\d{1,6}|.)'
+        'name': 'constant.character.escaped.css'
+      }
+    ]
+  }
+  {
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.css'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.css'
+    'name': 'string.quoted.single.css'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escaped.css'
+      }
+    ]
+  }
+  {
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.class.mixin.css'
+    'match': '(\\.[_a-zA-Z][a-zA-Z0-9_-]*(?=\\())'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.class.css'
+      '2':
+        'name': 'punctuation.definition.entity.css'
+    'match': '((\\.)[_a-zA-Z][a-zA-Z0-9_-]*)'
+  }
+  {
+    'begin': '(format|local|url|attr|counter|counters)\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'support.function.misc.css'
+      '2':
+        'name': 'punctuation.section.function.css'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.section.function.css'
+    'patterns': [
+      {
+          'begin': '\''
+          'beginCaptures':
+            '0':
+              'name': 'punctuation.definition.string.begin.css'
+          'end': '\''
+          'endCaptures':
+            '0':
+              'name': 'punctuation.definition.string.end.css'
+          'name': 'string.quoted.single.css'
+          'patterns': [
+            {
+              'match': '\\\\.'
+              'name': 'constant.character.escape.css'
+            }
+          ]
+      }
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.css'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.css'
+        'name': 'string.quoted.double.css'
+        'patterns': [
+          {
+            'match': '\\\\(\\d{1,6}|.)'
+            'name': 'constant.character.escape.css'
+          }
+        ]
+      }
+      {
+        'match': '[^\'") \\t]+'
+        'name': 'variable.parameter.misc.css'
+      }
+    ]
+  }
+  {
+    'match': '(#)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})\\b(?!.*?\\{)'
+    'name': 'constant.other.rgb-value.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.id'
+      '2':
+        'name': 'punctuation.definition.entity.css'
+    'match': '((#)[_a-zA-Z][a-zA-Z0-9_-]*)'
+    'name': 'meta.selector.css'
+  }
+  {
+    'begin': '/\\*'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.begin.css'
+    'end': '\\*/'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.end.css'
+    'name': 'comment.block.css'
+  }
+  {
+    'match': '[+-]?\\d*\\.?\\d+'
+    'name': 'constant.numeric.css'
+  }
+  {
+    'match': '(?<=[\\d])(ch|cm|deg|dpi|dpcm|dppx|em|ex|grad|in|mm|ms|pc|pt|px|rad|rem|turn|s|vh|vmin|vw)\\b|%'
+    'name': 'keyword.other.unit.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.entity.css'
+    'match': '(:+)(after|before|first-letter|first-line|selection)'
+    'name': 'entity.other.attribute-name.pseudo-element.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.entity.css'
+    'match': '(:+)(active|checked|default|dir|disabled|empty|enabled|first-child|first-of-type|first|fullscreen|focus|hover|indeterminate|in-range|invalid|lang|last-child|last-of-type|left|link|not|nth-child|nth-last-child|nth-last-of-type|nth-of-type|only-child|only-of-type|optional|out-of-range|read-only|read-write|required|right|root|scope|shadow|target|valid|visited)(?!\\s*;)'
+    'name': 'entity.other.attribute-name.pseudo-class.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.begin.entity.css'
+      '2':
+        'name': 'entity.other.attribute-name.attribute.css'
+      '3':
+        'name': 'punctuation.separator.operator.css'
+      '4':
+        'name': 'string.unquoted.attribute-value.css'
+      '5':
+        'name': 'string.quoted.double.attribute-value.css'
+      '6':
+        'name': 'punctuation.definition.string.begin.css'
+      '7':
+        'name': 'punctuation.definition.string.end.css'
+      '8':
+        'name': 'punctuation.definition.end.entity.css'
+    'match': '(?i)(\\[)\\s*(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)(?:\\s*([~|^$*]?=)\\s*(?:(-?[_a-z\\\\[[:^ascii:]]][_a-z0-9\\-\\\\[[:^ascii:]]]*)|((?>([\'"])(?:[^\\\\]|\\\\.)*?(\\6)))))?\\s*(\\])'
+    'name': 'meta.attribute-selector.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.at-rule.import.css'
+      '2':
+        'name': 'punctuation.definition.keyword.css'
+    'match': '^\\s*((@)import\\b)'
+    'name': 'meta.at-rule.import.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.at-rule.fontface.css'
+      '2':
+        'name': 'punctuation.definition.keyword.css'
+    'match': '^\\s*((@)font-face\\b)'
+    'name': 'meta.at-rule.fontface.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'keyword.control.at-rule.media.css'
+      '2':
+        'name': 'punctuation.definition.keyword.css'
+    'match': '^\\s*((@)media\\b)'
+    'name': 'meta.at-rule.media.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'support.type.property-name.css'
+      '2':
+        'name': 'punctuation.separator.key-value.css'
+    'match': '(?<![-a-z])(-webkit-[-A-Za-z]+|-moz-[-A-Za-z]+|-o-[-A-Za-z]+|-ms-[-A-Za-z]+|-khtml-[-A-Za-z]+|zoom|z-index|y|x|wrap|word-wrap|word-spacing|word-break|word|width|widows|white-space-collapse|white-space|white|weight|volume|voice-volume|voice-stress|voice-rate|voice-pitch-range|voice-pitch|voice-family|voice-duration|voice-balance|voice|visibility|vertical-align|variant|user-select|up|unicode-bidi|unicode|trim|transition-timing-function|transition-property|transition-duration|transition-delay|transition|transform|top-width|top-style|top-right-radius|top-left-radius|top-color|top|timing-function|text-wrap|text-transform|text-shadow|text-replace|text-outline|text-justify|text-indent|text-height|text-emphasis|text-decoration|text-align-last|text-align|text|target-position|target-new|target-name|target|table-layout|tab-size|style-type|style-position|style-image|style|string-set|stretch|stress|stacking-strategy|stacking-shift|stacking-ruby|stacking|src|speed|speech-rate|speech|speak-punctuation|speak-numeral|speak-header|speak|span|spacing|space-collapse|space|sizing|size-adjust|size|shadow|respond-to|rule-width|rule-style|rule-color|rule|ruby-span|ruby-position|ruby-overhang|ruby-align|ruby|rows|rotation-point|rotation|role|right-width|right-style|right-color|right|richness|rest-before|rest-after|rest|resource|resize|reset|replace|repeat|rendering-intent|rate|radius|quotes|punctuation-trim|punctuation|property|profile|presentation-level|presentation|position|pointer-events|point|play-state|play-during|play-count|pitch-range|pitch|phonemes|pause-before|pause-after|pause|page-policy|page-break-inside|page-break-before|page-break-after|page|padding-top|padding-right|padding-left|padding-bottom|padding|pack|overhang|overflow-y|overflow-x|overflow-style|overflow|outline-width|outline-style|outline-offset|outline-color|outline|orphans|origin|orientation|orient|ordinal-group|opacity|offset|numeral|new|nav-up|nav-right|nav-left|nav-index|nav-down|nav|name|move-to|model|min-width|min-height|min|max-width|max-height|max|marquee-style|marquee-speed|marquee-play-count|marquee-direction|marquee|marks|mark-before|mark-after|mark|margin-top|margin-right|margin-left|margin-bottom|margin|mask-image|list-style-type|list-style-position|list-style-image|list-style|list|lines|line-stacking-strategy|line-stacking-shift|line-stacking-ruby|line-stacking|line-height|line|level|letter-spacing|length|left-width|left-style|left-color|left|label|justify|iteration-count|inline-box-align|initial-value|initial-size|initial-before-align|initial-before-adjust|initial-after-align|initial-after-adjust|index|indent|increment|image-resolution|image-orientation|image|icon|hyphens|hyphenate-resource|hyphenate-lines|hyphenate-character|hyphenate-before|hyphenate-after|hyphenate|height|header|hanging-punctuation|grid-rows|grid-columns|grid|gap|font-weight|font-variant|font-style|font-stretch|font-size-adjust|font-size|font-family|font|float-offset|float|flex-group|flex|fit-position|fit|fill|filter|family|empty-cells|emphasis|elevation|duration|drop-initial-value|drop-initial-size|drop-initial-before-align|drop-initial-before-adjust|drop-initial-after-align|drop-initial-after-adjust|drop|down|dominant-baseline|display-role|display-model|display|direction|delay|decoration-break|decoration|cursor|cue-before|cue-after|cue|crop|counter-reset|counter-increment|counter|count|content|columns|column-width|column-span|column-rule-width|column-rule-style|column-rule-color|column-rule|column-gap|column-fill|column-count|column-break-before|column-break-after|column|color-profile|color|collapse|clip|clear|character|caption-side|break-inside|break-before|break-after|break|box-sizing|box-shadow|box-pack|box-orient|box-ordinal-group|box-lines|box-flex-group|box-flex|box-direction|box-decoration-break|box-align|box|bottom-width|bottom-style|bottom-right-radius|bottom-left-radius|bottom-color|bottom|border-width|border-top-width|border-top-style|border-top-right-radius|border-top-left-radius|border-top-color|border-top|border-style|border-spacing|border-right-width|border-right-style|border-right-color|border-right|border-radius|border-length|border-left-width|border-left-style|border-left-color|border-left|border-image|border-color|border-collapse|border-bottom-width|border-bottom-style|border-bottom-right-radius|border-bottom-left-radius|border-bottom-color|border-bottom|border|bookmark-target|bookmark-level|bookmark-label|bookmark|binding|bidi|before|baseline-shift|baseline|balance|background-size|background-repeat|background-position|background-origin|background-image|background-color|background-clip|background-break|background-attachment|background|azimuth|attachment|appearance|animation-timing-function|animation-play-state|animation-name|animation-iteration-count|animation-duration|animation-direction|animation-delay|animation-fill-mode|animation|alignment-baseline|alignment-adjust|alignment|align-last|align|after|adjust|will-change)(?=\\s*)(:)'
+  }
+  {
+    'match': '\\b(absolute|all|all-scroll|alternate|alternate-reverse|always|antialiased|auto|backwards|balance|baseline|below|bidi-override|block|bold|bolder|border-box|both|bottom|break-all|break-word|capitalize|center|char|circle|col-resize|collapse|column|column-reverse|contain|content-box|cover|crosshair|dashed|decimal|default|disabled|disc|distribute|distribute-all-lines|distribute-letter|distribute-space|dotted|double|e-resize|ease|ease-in|ease-in-out|ease-out|ellipsis|fixed|flex-end|flex-start|forwards|groove|hand|help|hidden|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|infinite|inherit|inline|inline-block|inset|inside|inter-ideograph|inter-word|italic|justify|keep-all|landscape|left|lighter|line|line-edge|line-through|linear-gradient|linear|list-item|local|loose|lower-alpha|lower-roman|lowercase|lr-tb|ltr|max-height|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|none|normal|not-allowed|nowrap|nw-resize|oblique|opacity|outset|outside|overline|padding-box|paused|pointer|portrait|pre|pre-line|pre-wrap|progressive|progress|radial-gradient|relative|repeating-radial-gradient|repeating-linear-gradient|repeat-x|repeat-y|repeat|reverse|ridge|right|round|row|row-resize|row-reverse|rtl|running|s-resize|scroll|se-resize|separate|small-caps|solid|space|space-around|space-between|square|static|step-end|step-start|stretch|strict|super|sw-resize|table-footer-group|table-header-group|tb-rl|text|text-bottom|text-top|thick|thin|top|transform|transparent|underline|upper-alpha|upper-roman|uppercase|vertical-ideographic|vertical-text|visible|w-resize|wait|whitespace|wrap|wrap-reverse)\\b'
+    'name': 'support.constant.property-value.css'
+  }
+  {
+    'match': '\\b(min-device-aspect-ratio|max-device-aspect-ratio|device-aspect-ratio|min-aspect-ratio|max-aspect-ratio|aspect-ratio|min-device-height|max-device-height|device-height|min-device-width|max-device-width|device-width|min-monochrome|max-monochrome|monochrome|min-color-index|max-color-index|color-index|min-color|max-color|color|orientation|scan|min-resolution|max-resolution|resolution|grid)\\b'
+    'name': 'support.type.property-name.media.css'
+  }
+  {
+    'match': '(\\b(?i:arial|century|comic|courier|futura|garamond|georgia|helvetica|impact|lucida|symbol|system|tahoma|times|trebuchet|utopia|verdana|webdings|sans-serif|serif|monospace)\\b)'
+    'name': 'support.constant.font-name.css'
+  }
+  {
+    'comment': 'http://www.w3.org/TR/CSS21/syndata.html#value-def-color'
+    'match': '\\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\\b'
+    'name': 'support.constant.color.w3c-standard-color-name.css'
+  }
+  {
+    'match': '\\b(abs|acos|alpha|argb|asin|atan|average|blue|ceil|color|contrast|convert|convert|cos|darken|data-uri|desaturate|difference|e|escape|exclusion|extract|fade|fadein|fadeout|floor|format|green|greyscale|hardlight|hsl|hsla|hsv|hsva|hsvhue|hsvsaturation|hsvvalue|hue|length|lighten|lightness|luma|max|min|mix|mod|multiply|negation|overlay|percentage|pi|pow|red|replace|rgb|rgba|round|saturate|saturation|screen|sin|softlight|spin|sqrt|tan|unit)\\b'
+    'name': 'support.function.any-method.builtin.less'
+  }
+  {
+    'match': '\\b(rgb|rgba|hsl|hsla|url|scale|scale[XY]|translate|translate[XY]|rect|rotate|skew|skew[XY]|cubic-bezier|translate3d|blur)\\b'
+    'name': 'support.function.any-method.builtin.css'
+  }
+  {
+    'match': '\\b(all|aural|braille|embossed|handheld|print|projection|screen|tty|tv)\\b'
+    'name': 'support.constant.media.css'
+  }
+  {
+    'match': '\\b(color-stop|from|to)\\b'
+    'name': 'support.function.any-method.gradient.css'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'support.function.less'
+    'match': '(\\.[a-zA-Z0-9_-]+)\\s*(;|\\()'
+  }
+  {
+    'begin': '(^[ \\t]+)?(?=//)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.whitespace.comment.leading.less'
+    'end': '(?!\\G)'
+    'patterns': [
+      {
+        'begin': '//'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.less'
+        'end': '\\n'
+        'name': 'comment.line.double-slash.less'
+      }
+    ]
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.definition.variable.less'
+    'match': '@[a-zA-Z0-9_-][\\w-]*(?=\\s*)'
+    'name': 'variable.other.less'
+  }
+  {
+    "match": "\\!\\s*important",
+    "name": "keyword.other.important.css"
+  }
+  {
+    'match': '\\$|%|&|\\*|\\-\\-|\\-|\\+\\+|\\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\\|\\||\\?\\:|\\*=|(?<!\\()/=|%=|\\+=|\\-=|&=|\\^=|\\/\\b'
+    'name': 'keyword.operator.less'
+  }
+  {
+    'match': '\\s(\\=\\=|\\!\\=|\\<\\=|\\>\\=|\\<|\\>|not|or|and|when)\\s'
+    'name': 'keyword.control.logical.operator'
+  }
+  {
+    'match': '\\b(a|abbr|acronym|address|applet|article|area|audio|video|b|base|big|blockquote|body|br|button|caption|canvas|center|cite|code|col|colgroup|dd|del|details|dfn|div|dl|dt|em|embed|fieldset|figure|figcaption|form|frame|frameset|(h[1-6])|head|hr|html|i|iframe|img|input|ins|kbd|label|legend|li|link|main|map|mark|meta|menu|nav|noframes|noscript|object|ol|optgroup|option|output|p|param|pre|q|ruby|s|samp|script|select|small|span|strike|strong|style|sub|sup|summary|svg|table(?!-)|tbody|td|textarea|tfoot|th|thead|title|tr|tt|u|ul|var|header|section|footer|aside|hgroup|time)\\b'
+    'name': 'keyword.control.html.elements'
+  }
+  {
+    'match': '\\b([a-zA-Z0-9]+(-[a-zA-Z0-9]+)+)(?=\\.|\\s++[^:]|\\s*[,{]|:+(link|visited|hover|active|focus|target|lang|disabled|enabled|checked|indeterminate|root|nth-child()|nth-last-child()|nth-of-type()|nth-last-of-type()|first-child|last-child|first-of-type|last-of-type|only-child|only-of-type|empty|not|valid|invalid|shadow)(\\([0-9A-Za-z]*\\))?)'
+    'name': 'keyword.control.html.custom.elements'
+  }
+  {
+    'captures':
+      '1':
+        'name': 'punctuation.section.property-list.begin.css'
+      '2':
+        'name': 'punctuation.section.property-list.end.css'
+    'comment': 'Match empty braces to give proper ↩ action'
+    'match': '(\\{)(\\})'
+    'name': 'meta.brace.curly.less'
+  }
+  {
+    'match': '\\{|\\}'
+    'name': 'meta.brace.curly.less'
+  }
+  {
+    'match': '\\(|\\)'
+    'name': 'meta.brace.round.less'
+  }
+  {
+    'match': '\\[|\\]'
+    'name': 'meta.brace.square.less'
+  }
+  {
+    'match': ';'
+    'name': 'punctuation.terminator.rule.css'
+  }
+  {
+    'match': ':'
+    'name': 'punctuation.separator.key-value.css'
+  }
+]

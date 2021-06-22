@@ -1,0 +1,52 @@
+'.source.css':
+  '!important CSS':
+    'prefix': '!'
+    'body': '${1:!important}'
+  'background-color: hex':
+    'prefix': 'background'
+    'body': 'background-color: #${1:DDD};$0'
+  'clear: value':
+    'prefix': 'clear'
+    'body': 'clear: ${1:left};$0'
+  'color: hex':
+    'prefix': 'color'
+    'body': 'color: #${1:DDD};$0'
+  'display: block':
+    'prefix': 'block'
+    'body': 'display: block;$0'
+  'display: inline':
+    'prefix': 'inline'
+    'body': 'display: inline;$0'
+  'float: left/right/none':
+    'prefix': 'float'
+    'body': 'float: ${1:left};$0'
+  'font-family: family':
+    'prefix': 'font'
+    'body': 'font-family: ${1:Arial, "MS Trebuchet"}, ${2:sans-}serif;$0'
+  'letter-spacing: px':
+    'prefix': 'letter'
+    'body': 'letter-spacing: $1${2:px};$0'
+  'overflow: type':
+    'prefix': 'overflow'
+    'body': 'overflow: ${1:hidden};$0'
+  'padding: all':
+    'prefix': 'padding'
+    'body': 'padding: ${1:20px};$0'
+  'position: type':
+    'prefix': 'position'
+    'body': 'position: ${1:absolute};$0'
+  'properties { } ( } )':
+    'prefix': '{'
+    'body': '{\n\t/* $1 */\n\t$0\n'
+  'text-align: left/center/right':
+    'prefix': 'text'
+    'body': 'text-align: ${1:center};$0'
+  'visibility: type':
+    'prefix': 'visibility'
+    'body': 'visibility: ${1:hidden};$0'
+  'white-space: normal/pre/nowrap':
+    'prefix': 'white'
+    'body': 'white-space: ${1:nowrap};$0'
+  'z-index: index':
+    'prefix': 'z'
+    'body': 'z-index: $1;$0'

@@ -1,0 +1,46 @@
+#!/usr/bin/env coffee
+
+# This script loads the "definitive" list of emoji names from the
+# arvida/emoji-cheat-sheet.com repository and builds an oniguruma pattern
+# out of the list of names and also a list of completions.
+
+path = require 'path'
+_ = require 'underscore-plus'
+CSON = require 'season'
+request = require 'request'
+
+options =
+  uri: "https://api.github.com/repos/arvida/emoji-cheat-sheet.com/git/trees/master"
+  json: true
+  qs:
+    recursive: 1
+  headers:
+    'User-Agent': 'atom/language-gfm'
+
+request options, (error, response, body={}) ->
+  if error?
+    console.error(error.message)
+  else
+    {tree} = body
+    names = []
+    completions = []
+    for entry in tree
+      if entry.path.indexOf('public/graphics/emojis/') is 0
+        if name = path.basename(entry.path, path.extname(entry.path))
+          completions.push(":#{name}:")
+          names.push(_.escapeRegExp(name))
+
+    if names.length > 0
+      grammarPath = path.resolve(__dirname, '..', 'grammars', 'gfm.cson')
+      scopedPropertiesPath = path.resolve(__dirname, '..', 'scoped-properties', 'gfm.cson')
+      grammar = CSON.readFileSync(grammarPath)
+      scopedProperties = CSON.readFileSync(scopedPropertiesPath)
+      for pattern in grammar.patterns
+        if pattern.name is 'string.emoji.gfm'
+          pattern.match = "(:)(#{names.join('|')})(:)"
+      scopedProperties['.source.gfm:not(.markup.code)'].editor.completions = completions
+      CSON.writeFileSync(grammarPath, grammar)
+      CSON.writeFileSync(scopedPropertiesPath, scopedProperties)
+      console.log "Wrote emoji pattern with #{names.length} emojis"
+    else
+      console.error "Failed to read emoji names"

@@ -1,0 +1,7 @@
+'.source.antlr':
+  'editor':
+    'foldEndPattern': '^(endef|endif)\\b'
+'.source.makefile':
+  'editor':
+    'increaseIndentPattern': '^[^\\t ]+:'
+    'commentStart': '# '

@@ -1,0 +1,11 @@
+{
+  "name": "language-ruby",
+  "version": "0.47.0",
+  "description": "Ruby language support in Atom",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/atom/language-ruby"
+}

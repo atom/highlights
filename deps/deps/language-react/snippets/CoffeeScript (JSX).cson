@@ -1,0 +1,78 @@
+{
+".source.coffee":
+  "React: componentDidMount: -> ...":
+    prefix: "cdm"
+    body: "componentDidMount: ->\n\t${1}\n"
+
+  "React: componentDidUpdate: (pp, ps) -> ...":
+    prefix: "cdup"
+    body: "componentDidUpdate: (prevProps, prevState) ->\n\t${1}\n"
+
+  "React: componentWillMount: -> ...":
+    prefix: "cwm"
+    body: "componentWillMount: ->\n\t${1}\n"
+
+  "React: componentWillReceiveProps: (np) -> ...":
+    prefix: "cwr"
+    body: "componentWillReceiveProps: (nextProps) ->\n\t${1}\n"
+
+  "React: componentWillUnmount: -> ...":
+    prefix: "cwun"
+    body: "componentWillUnmount: ->\n\t${1}\n"
+
+  "React: componentWillUpdate: (np, ns) -> ...":
+    prefix: "cwu"
+    body: "componentWillUpdate: (nextProps, nextState) ->\n\t${1}\n"
+
+  "React: cx({ ... })":
+    prefix: "cx"
+    body: "cx(\n\t$1: $2\n)"
+
+  "React: forceUpdate(...)":
+    prefix: "fup"
+    body: "forceUpdate(${1:callback})"
+
+  "React: getDefaultProps: -> {...}":
+    prefix: "gdp"
+    body: "getDefaultProps: ->\n\t${1}\n"
+
+  "React: getInitialState: -> {...}":
+    prefix: "gis"
+    body: "getInitialState: ->\n\t${1}\n"
+
+  "React: isMounted()":
+    prefix: "ism"
+    body: "isMounted()"
+
+  "React: propTypes { ... }":
+    prefix: "pt"
+    body: "propTypes:\n\t${1}: React.PropTypes.${2:string}"
+
+  "React: component skeleton":
+    prefix: "rcc"
+    body: "React = require 'react'\n\n${1} = React.createClass\n\n\trender: ->\n\t${0:<div />\n\nmodule.exports = ${1}"
+
+  "React: render: -> ...":
+    prefix: "ren"
+    body: "render: ->\n\t${1:<div />}\n\t"
+
+  "React: setState({ ... })":
+    prefix: "sst"
+    body: "setState\n\t${1}: ${2}"
+
+  "React: shouldComponentUpdate: (np, ns) -> ...":
+    prefix: "scu"
+    body: "shouldComponentUpdate: (nextProps, nextState) ->\n\t${1}\n"
+
+  "React: @props.":
+    prefix: "props"
+    body: "@props.${1}"
+
+  "React: @state.":
+    prefix: "state"
+    body: "@state.${1}"
+
+  "React: render(component, container, [callback])":
+    prefix: "rrc"
+    body: "ReactDOM.render ${1:<$2 />}, ${3:document.body}${4:, ${5:callback}}"
+}

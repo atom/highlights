@@ -1,0 +1,230 @@
+'scopeName': 'source.clojure'
+'fileTypes': [
+  'clj'
+  'cljs'
+  'clojure'
+  'edn'
+]
+'foldingStartMarker': '\\(\\s*$'
+'foldingStopMarker': '^\\s*\\)'
+'name': 'Clojure'
+'patterns': [
+  {
+    'include': '#comment'
+  }
+  {
+    'include': '#shebang-comment'
+  }
+  {
+    'include': '#quoted-sexp'
+  }
+  {
+    'include': '#sexp'
+  }
+  {
+    'include': '#keyfn'
+  }
+  {
+    'include': '#string'
+  }
+  {
+    'include': '#vector'
+  }
+  {
+    'include': '#set'
+  }
+  {
+    'include': '#map'
+  }
+  {
+    'include': '#regexp'
+  }
+  {
+    'include': '#var'
+  }
+  {
+    'include': '#constants'
+  }
+  {
+    'include': '#symbol'
+  }
+  {
+    'include': '#whitespace'
+  }
+]
+'repository':
+  'comment':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.comment.clojure'
+    'match': '(;).*$\\n?'
+    'name': 'comment.line.semicolon.clojure'
+  'constants':
+    'patterns': [
+      {
+        'match': '(nil)(?=(\\s|\\)|\\]|\\}))'
+        'name': 'constant.language.nil.clojure'
+      }
+      {
+        'match': '(true|false)'
+        'name': 'constant.language.boolean.clojure'
+      }
+      {
+        'match': '(\\d+/\\d+)'
+        'name': 'constant.numeric.ratio.clojure'
+      }
+      {
+        'match': '(\\d+r\\d+)'
+        'name': 'constant.numeric.arbitrary-radix.clojure'
+      }
+      {
+        'match': '(0x\\d+)'
+        'name': 'constant.numeric.hexidecimal.clojure'
+      }
+      {
+        'match': '(0\\d+)'
+        'name': 'constant.numeric.octal.clojure'
+      }
+      {
+        'match': '(\\d+)'
+        'name': 'constant.numeric.decimal.clojure'
+      }
+      {
+        'match': '(?<=(\\s|\\(|\\[|\\{)):[a-zA-Z0-9\\#\\.\\-\\_\\:\\+\\=\\>\\<\\/\\!\\?\\*]+(?=(\\s|\\)|\\]|\\}))'
+        'name': 'constant.keyword.clojure'
+      }
+    ]
+  'keyfn':
+    'patterns': [
+      {
+        'match': '(?<=(\\s|\\(|\\[|\\{))(if(-[-a-z\\?]*)?|when(-[-a-z]*)?|for(-[-a-z]*)?|cond|do|let(-[-a-z\\?]*)?|binding|loop|recur|fn|throw[a-z\\-]*|try|catch|finally|([a-z]*case))(?=(\\s|\\)|\\]|\\}))'
+        'name': 'storage.control.clojure'
+      }
+      {
+        'match': '(?<=(\\s|\\(|\\[|\\{))(declare-?|(in-)?ns|import|use|require|load|compile|(def[a-z\\-]*))(?=(\\s|\\)|\\]|\\}))'
+        'name': 'keyword.control.clojure'
+      }
+    ]
+  'map':
+    'begin': '(\\{)'
+    'end': '(\\})'
+    'name': 'meta.map.clojure'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'quoted-sexp':
+    'begin': '([\'``]\\()'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.expression.begin.clojure'
+    'end': '(\\))(\\n)?'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.expression.end.clojure'
+      '2':
+        'name': 'meta.after-expression.clojure'
+    'name': 'meta.quoted-expression.clojure'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'regexp':
+    'begin': '#\\"'
+    'end': '\\"'
+    'name': 'string.regexp.clojure'
+    'patterns': [
+      {
+        'include': '#regexp_escaped_char'
+      }
+    ]
+  'regexp_escaped_char':
+    'match': '\\\\(\\")'
+    'name': 'string.regexp.clojure'
+  'set':
+    'begin': '(\\#\\{)'
+    'end': '(\\})'
+    'name': 'meta.set.clojure'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'sexp':
+    'begin': '(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.section.expression.begin.clojure'
+    'end': '(\\))(\\n)?'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.section.expression.end.clojure'
+      '2':
+        'name': 'meta.after-expression.clojure'
+    'name': 'meta.expression.clojure'
+    'patterns': [
+      {
+        'begin': '(?<=\\()(ns|def|def-|defn|defn-|defvar|defvar-|defmacro|defmacro-|deftest)\\s+(.+?)(?=\\s|\\))'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.control.clojure'
+          '2':
+            'name': 'entity.global.clojure'
+        'end': '(?=\\))'
+        'name': 'meta.definition.global.clojure'
+        'patterns': [
+          {
+            'include': '$self'
+          }
+        ]
+      }
+      {
+        'include': '$self'
+      }
+    ]
+  'shebang-comment':
+    'captures':
+      '1':
+        'name': 'punctuation.definition.comment.shebang.clojure'
+    'match': '^(\\#!).*$\\n?'
+    'name': 'comment.line.semicolon.clojure'
+  'string':
+    'begin': '(")'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.string.begin.clojure'
+    'end': '(")'
+    'endCaptures':
+      '1':
+        'name': 'punctuation.definition.string.end.clojure'
+    'name': 'string.quoted.double.clojure'
+    'patterns': [
+      {
+        'match': '\\\\.'
+        'name': 'constant.character.escape.clojure'
+      }
+    ]
+  'symbol':
+    'patterns': [
+      {
+        'match': '(\\w[\\w\\d]+)'
+        'name': 'meta.symbol.clojure'
+      }
+    ]
+  'var':
+    'match': '(?<=(\\s|\\(|\\[|\\{)\\#)\'[a-zA-Z0-9\\.\\-\\_\\:\\+\\=\\>\\<\\/\\!\\?\\*]+(?=(\\s|\\)|\\]|\\}))'
+    'name': 'meta.var.clojure'
+  'vector':
+    'begin': '(\\[)'
+    'end': '(\\])'
+    'name': 'meta.vector.clojure'
+    'patterns': [
+      {
+        'include': '$self'
+      }
+    ]
+  'whitespace':
+    'match': '\\s+$'
+    'name': 'invalid.trailing-whitespace'
