@@ -1,4 +1,5 @@
-![](https://f.cloud.github.com/assets/671378/2454103/24d89962-aee6-11e3-9dcf-ee2d81ec0373.jpg)
+##### Atom and all repositories under Atom will be archived on December 15, 2022. Learn more in our [official announcement](https://github.blog/2022-06-08-sunsetting-atom/)
+ ![](https://f.cloud.github.com/assets/671378/2454103/24d89962-aee6-11e3-9dcf-ee2d81ec0373.jpg)
 
 Reads in code, writes out HTML with CSS classes based on the tokens in the code.
 
