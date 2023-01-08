@@ -58,6 +58,7 @@ highlighter = new Highlights()
 html = highlighter.highlightSync
   fileContents: 'var hello = "world";'
   scopeName: 'source.js'
+  scopePrefix: 'syntax--'
 
 console.log html
 ```
